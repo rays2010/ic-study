@@ -8,26 +8,13 @@
 
 		public function index(){
 			$data['title'] = '首页';
+
+
+			$this->load->library('session');
+			$data['user'] = unserialize($this->session->userdata('user'));
+
 			$this->load->view('templates/header', $data);
-			$this->load->view('pages/home', $data);
-			$this->load->view('templates/footer', $data);
-		}
-
-		public function view(){
-
-			// 根据id取用户
-			$data['user'] = $this->users->get_user(1);
-
-			// 添加用户
-
-			// 删除用户
-
-			// 更新用户资料
-
-			// template outing
-			$data['title'] = $page;
-			$this->load->view('templates/header', $data);
-			$this->load->view('pages/'.$page, $data);
+			$this->load->view('pages/index', $data);
 			$this->load->view('templates/footer', $data);
 		}
 	}

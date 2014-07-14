@@ -18,3 +18,67 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 INSERT INTO `users` VALUES(1, 'bzyzwang@163.com', 'b713fa25054286805a947a2586381e2c', '极地', 'xxx', 'admin', '2014-07-01 00:00:00', '2014-07-01 00:00:00');
+
+-- ----------------------------
+-- 文章表
+-- ----------------------------
+DROP TABLE IF EXISTS `posts`;
+CREATE TABLE `posts` (
+  `pid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'post表主键',
+  `title` varchar(200) NOT NULL COMMENT '内容标题',
+  `slug` varchar(200) DEFAULT NULL COMMENT '内容缩略名',
+  `created` datetime NOT NULL COMMENT '内容生成时的GMT unix时间戳',
+  `modified` datetime NOT NULL COMMENT '内容更改时的GMT unix时间戳',
+  `text` text COMMENT '内容文字',
+  `author_id` int(10) unsigned NOT NULL COMMENT '用户id',
+  `type` varchar(16) DEFAULT 'post' COMMENT '内容类别',
+  `status` varchar(16) DEFAULT 'publish' COMMENT '内容状态',
+  `comment_count` int(10) unsigned DEFAULT '0' COMMENT '评论数',
+  PRIMARY KEY (`pid`),
+  UNIQUE KEY `slug` (`slug`),
+  KEY `created` (`created`),
+  KEY `author_id` (`author_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+-- ----------------------------
+-- 话题表
+-- ----------------------------
+DROP TABLE IF EXISTS `topics`;
+CREATE TABLE `topics` (
+	`tid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'topic表主键',
+	`title` varchar(200) NOT NULL COMMENT '话题名称',
+	`excerpt` varchar(200) NOT NULL COMMENT '话题摘要',
+	`cover` varchar(128) NOT NULL COMMENT '配图',
+	`author_id` int(10) unsigned NOT NULL COMMENT '用户id',
+	`created` datetime NOT NULL COMMENT '内容生成时的GMT unix时间戳',
+	`modified` datetime NOT NULL COMMENT '内容更改时的GMT unix时间戳',
+	PRIMARY KEY (`tid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+-- ----------------------------
+-- 管理音乐表
+-- ----------------------------
+DROP TABLE IF EXISTS `musics`;
+CREATE TABLE `musics` (
+	`pid` int(10) unsigned NOT NULL COMMENT '父',
+	`source` varchar(200) DEFAULT NULL COMMENT '来源',
+	`mp3_url` varchar(128) COMMENT 'mp3地址',
+	`web_url` varchar(128) COMMENT '网页播放地址',
+	`mobile_url` varchar(128) COMMENT '手机播放地址',
+	PRIMARY KEY (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- 关系表
+-- ----------------------------
+DROP TABLE IF EXISTS `relationships`;
+CREATE TABLE `relationships` (
+  `pid` int(10) unsigned NOT NULL COMMENT '父',
+  `cid` int(10) unsigned NOT NULL COMMENT '从属',
+  PRIMARY KEY (`pid`,`cid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+
