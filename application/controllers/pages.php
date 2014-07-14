@@ -6,10 +6,14 @@
 			$this->load->model('users');
 		}
 
-		public function view($page = 'home'){
-			if(! file_exists(APPPATH.'/views/pages/'.$page.'.php')){
-				show_404();
-			}
+		public function index(){
+			$data['title'] = '首页';
+			$this->load->view('templates/header', $data);
+			$this->load->view('pages/home', $data);
+			$this->load->view('templates/footer', $data);
+		}
+
+		public function view(){
 
 			// 根据id取用户
 			$data['user'] = $this->users->get_user(1);
@@ -21,7 +25,7 @@
 			// 更新用户资料
 
 			// template outing
-			$data['title'] = ucfirst($page);
+			$data['title'] = $page;
 			$this->load->view('templates/header', $data);
 			$this->load->view('pages/'.$page, $data);
 			$this->load->view('templates/footer', $data);
