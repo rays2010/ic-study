@@ -37,12 +37,15 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-$route['default_controller'] = "pages/index";
+$route['default_controller'] = "index";
 $route['404_override'] = '';
+$route['user/(:num)'] = 'user/index/$1';
+$route['item/(:num)'] = 'item/index/$1';
+$route['topic/(:num)'] = 'topic/index/$1';
+$route['item/del/(:num)'] = 'item/del/$1';
 
 // $route['news/create'] = 'news/create';
 // $route['news'] = 'news/index';
-// $route['news/(:any)'] = 'news/view/$1';
 // $route['(:any)'] = 'pages/view/$1';
 
 

@@ -3,16 +3,20 @@
 	class Users extends CI_Model{
 		public function __construct(){
 			$this->load->database();
-			$this->load->helper('email');
-			$this->load->helper('security');
-			$this->load->library('session');
 		}
 
+		// 根据id取单个用户
 		public function get_user($id){
 			$query = $this->db->get_where('users', array('uid' => $id));
 			return $query->row_array();
 		}
 
+		public function get_nickname($id){
+			$query = $this->db->select('nickname')->get_where('users', array('uid' => $id));
+			return $query->row()->nickname;
+		}
+
+		// 登录
 		public function login($mail, $pw){
 			// 错误信息
 			$error = array(
@@ -20,7 +24,7 @@
 				'msg' => '无',
 			);
 
-			// 注册逻辑
+			// 登录逻辑
 			if(empty($mail)){
 				$error['msg'] = '邮箱地址不能为空';
 			} else if(!valid_email($mail)){
@@ -34,6 +38,7 @@
 					$error['msg'] = '登录成功';
 
 					$newdata = array(
+					   'uid' => $result['uid'],
 	                   'nickname'  => $result['nickname'],
 	                   'mail'     => $result['mail'],
 	                   'logged_in' => TRUE
@@ -48,6 +53,7 @@
 			return $error;
 		}
 
+		// 注册
 		public function add_user($mail, $pw, $nickname){
 
 			// 错误信息
@@ -90,7 +96,12 @@
 					$error['msg'] = '注册成功';
 
 					// 设置session
+					$this->db->select('uid');
+					$query = $this->db->get_where('users', array('mail' => $mail));
+					$resutl = $query->row_array();
+
 					$newdata = array(
+					   'uid' => $resutl['uid'],
 	                   'nickname'  => $nickname,
 	                   'mail'     => $mail,
 	                   'logged_in' => TRUE
@@ -102,10 +113,12 @@
 			return $error;
 		}
 
+		// 删除用户
 		public function del_user($id){
 
 		}
 
+		// 更新用户资料
 		public function update_user(){
 
 		}

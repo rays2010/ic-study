@@ -22,9 +22,9 @@ INSERT INTO `users` VALUES(1, 'bzyzwang@163.com', 'b713fa25054286805a947a2586381
 -- ----------------------------
 -- 文章表
 -- ----------------------------
-DROP TABLE IF EXISTS `posts`;
-CREATE TABLE `posts` (
-  `pid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'post表主键',
+DROP TABLE IF EXISTS `items`;
+CREATE TABLE `items` (
+  `iid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'post表主键',
   `title` varchar(200) NOT NULL COMMENT '内容标题',
   `slug` varchar(200) DEFAULT NULL COMMENT '内容缩略名',
   `created` datetime NOT NULL COMMENT '内容生成时的GMT unix时间戳',
@@ -34,8 +34,7 @@ CREATE TABLE `posts` (
   `type` varchar(16) DEFAULT 'post' COMMENT '内容类别',
   `status` varchar(16) DEFAULT 'publish' COMMENT '内容状态',
   `comment_count` int(10) unsigned DEFAULT '0' COMMENT '评论数',
-  PRIMARY KEY (`pid`),
-  UNIQUE KEY `slug` (`slug`),
+  PRIMARY KEY (`iid`),
   KEY `created` (`created`),
   KEY `author_id` (`author_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;

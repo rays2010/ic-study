@@ -9,23 +9,27 @@
 
 		public function index(){
 
+			// 请求处理
 			$mail = $this->input->post('mail');
 			$pw = $this->input->post('pw');
 			
 			if(!empty($mail) && !empty($pw)){
 				$result = $this->users->login($mail, $pw);
 				if($result['code'] > 0){
-					$this->load->helper('url');
-					redirect('/', 'refresh');
+					redirect('/');
 				} else {
 					echo '登录失败';
 				}
 			}
 
-			$data['title'] = '登录';
-			$this->load->view('templates/header', $data);
+			// 模板变量
+			$data = array(
+				'title' => '登录',
+			);
+
+			// 模板输出
 			$this->load->view('pages/login', $data);
-			$this->load->view('templates/footer', $data);
+			
 		}
 	}
 
