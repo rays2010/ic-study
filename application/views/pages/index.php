@@ -2,7 +2,7 @@
 
 	$this->load->view('templates/header');
 
-	if($user['logged_in']){
+	if($user['is_login']){
 		echo $user['nickname'].'('.$user['mail'].')'.'已登录';
 		echo '<br>';
 		echo anchor('/user/'.$user['uid'], '个人主页');
@@ -16,7 +16,6 @@
 		echo anchor('/reg', '注册', array('title'=>'注册'));
 		echo anchor('/login', '登录', array('title'=>'登录'));
 	}
-
 
 	echo '<br><br>';
 	echo '本周话题：';

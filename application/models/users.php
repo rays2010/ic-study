@@ -32,18 +32,12 @@
 			} else if(empty($pw)){
 				$error['msg'] = '密码不能为空';
 			} else {
-				$result = $this->db->get_where('users', array('mail' => $mail, 'password' => do_hash($pw, 'md5')))->row_array();
-				if(!empty($result)){
+				$user = $this->db->get_where('users', array('mail' => $mail, 'password' => do_hash($pw, 'md5')))->row_array();
+				if(!empty($user)){
 					$error['code'] = 1;
 					$error['msg'] = '登录成功';
-
-					$newdata = array(
-					   'uid' => $result['uid'],
-	                   'nickname'  => $result['nickname'],
-	                   'mail'     => $result['mail'],
-	                   'logged_in' => TRUE
-	                );
-					$this->session->set_userdata(array('user'=> serialize($newdata)));
+	                // 用户登录
+	                $this->auth->login($user);
 				} else {
 					$error['code'] = '-1';
 					$error['msg'] = '登录失败';
@@ -95,18 +89,9 @@
 					$error['code'] = 1;
 					$error['msg'] = '注册成功';
 
-					// 设置session
-					$this->db->select('uid');
-					$query = $this->db->get_where('users', array('mail' => $mail));
-					$resutl = $query->row_array();
-
-					$newdata = array(
-					   'uid' => $resutl['uid'],
-	                   'nickname'  => $nickname,
-	                   'mail'     => $mail,
-	                   'logged_in' => TRUE
-	                );
-					$this->session->set_userdata(array('user'=> serialize($newdata)));
+					// 用户登录
+					$user = $this->db->get_where('users', array('mail' => $mail))->row_array();;
+					$this->auth->login($user);
 				}
 			}
 

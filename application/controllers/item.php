@@ -41,8 +41,40 @@
 			);
 
 			// 输出模板
-			$this->load->view('pages/item', $data);
+			$this->load->view('pages /item', $data);
 		}
+
+		public function edit($id = 0){
+
+			if(!$this->items->can_edit($id)) redirect('/');
+
+			// 请求处理
+			$title = $this->input->post('title');
+			$iid = $this->input->post('iid');
+			if(!empty($title) && !empty($iid)){
+
+				$this->items->edit_item($iid, array(
+					'title' => $title,
+					'text' => $title,
+				));
+				redirect('item/'.$iid);
+
+			} else {
+				// 模板变量
+				$data = array(
+					'title' => '修改文章',
+					'page' => 'edit',
+					'item' => $this->items->get_item_by_id($id)
+				);
+
+				// 输出模板
+				$this->load->view('pages/item', $data);
+			}
+
+			
+
+		}
+		
 
 		public function del($iid){
 			echo 'del -'.$iid;

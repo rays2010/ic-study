@@ -11,8 +11,8 @@
 			// 模板变量
 			$data = array(
 				'title' => '首页',
-				'user' => unserialize($this->session->userdata('user')),
-				'item' => $this->items->get_items(),
+				'user'  => $this->auth->get_current_user(),
+				'item'  => $this->items->get_items(),
 				'topic' => $this->topics->get_recent_topic(),
 			);
 

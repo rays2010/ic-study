@@ -41,12 +41,25 @@
 			$result = $this->db->insert('items', $data);
 		}
 
-		public function update_item(){
+		public function edit_item($id, $data){
+			$this->db->where('iid', $id);
+			$this->db->update('items', $data);
+		}
+
+		public function del_item($iid){
 
 		}
 
-		public function del_item($pid){
-
+		public function can_edit($id){
+			$user = $this->auth->get_current_user();
+			$this->db->select('author_id');
+			$query = $this->db->get_where('items', array('iid' => $id));
+			$result = $query->row_array();
+			if($result['author_id'] == $user['uid']){
+				return true;
+			} else {
+				return false;
+			}
 		}
 	}
 

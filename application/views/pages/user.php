@@ -14,8 +14,13 @@
 	echo '<br>';
 	echo '文章列表：';
 	echo '<br>';
+
 	foreach ($item as $k => $v) {
 		echo anchor('/item/'.$v->iid, $v->text);
+		echo ' - ';
+		if($is_owner){
+			echo anchor('/item/edit/'.$v->iid, '(修改)');
+		}
 		echo '<br>';
 	}
 

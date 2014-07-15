@@ -43,6 +43,7 @@ $route['user/(:num)'] = 'user/index/$1';
 $route['item/(:num)'] = 'item/index/$1';
 $route['topic/(:num)'] = 'topic/index/$1';
 $route['item/del/(:num)'] = 'item/del/$1';
+$route['item/edit/(:num)'] = 'item/edit/$1';
 
 // $route['news/create'] = 'news/create';
 // $route['news'] = 'news/index';

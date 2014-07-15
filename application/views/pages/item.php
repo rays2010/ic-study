@@ -23,6 +23,14 @@
 		echo '<br>';
 		echo form_submit(array('value'=>'添加'));
 		echo form_close();
+	} else if($page == 'edit'){
+		echo anchor('/', '首页');
+		echo form_open('item/edit');
+		echo form_textarea(array('name'=>'title', 'placeholder'=>'输入话题...', 'value'=> $item['title']));
+		echo form_hidden('iid', $item['iid']);
+		echo '<br>';
+		echo form_submit(array('value'=>'更新'));
+		echo form_close();
 	}
 
 	$this->load->view('templates/footer');
