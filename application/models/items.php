@@ -46,8 +46,8 @@
 			$this->db->update('items', $data);
 		}
 
-		public function del_item($iid){
-
+		public function del_item($id){
+			$this->db->delete('items', array('iid'=> $id));
 		}
 
 		public function can_edit($id){

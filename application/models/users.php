@@ -13,7 +13,10 @@
 
 		public function get_nickname($id){
 			$query = $this->db->select('nickname')->get_where('users', array('uid' => $id));
-			return $query->row()->nickname;
+			$result = $query->row();
+			if(!empty($result)){
+				return $result->nickname;
+			}
 		}
 
 		// 登录

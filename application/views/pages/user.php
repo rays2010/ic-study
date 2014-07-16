@@ -6,9 +6,12 @@
 	echo '<br>';
 	echo $user['nickname'].'的个人主页';
 	echo ' ';
-	echo '(关注他)';
 	echo ' ';
-	echo '(私信)';
+	if(!$is_owner){
+		echo '（'.anchor('/letter/'.$user['uid'], '私信').'）';
+	} else {
+		echo '（'.anchor('/letter/', '私信列表').'）';
+	}
 
 	echo '<br>';
 	echo '<br>';
@@ -20,21 +23,10 @@
 		echo ' - ';
 		if($is_owner){
 			echo anchor('/item/edit/'.$v->iid, '(修改)');
+			echo anchor('/item/del/'.$v->iid, '(删除)');
 		}
 		echo '<br>';
 	}
-
-	echo '<br>';
-	echo '<br>';
-	echo '粉丝列表：';
-	echo '<br>';
-	echo '<br>';
-
-	echo '<br>';
-	echo '<br>';
-	echo '关注列表：';
-	echo '<br>';
-	echo '<br>';
 
 	$this->load->view('templates/footer');
 ?>

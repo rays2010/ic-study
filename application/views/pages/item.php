@@ -18,15 +18,17 @@
 		echo '评论数'.$item['comment_count'];
 	} else if($page == 'add'){
 		echo anchor('/', '首页');
+		echo '<br><br>';
+		echo '添加文章：';
 		echo form_open('item/add');
-		echo form_textarea(array('name'=>'text', 'placeholder'=>'输入话题...'));
+		echo form_textarea(array('name'=>'text', 'placeholder'=>'输入想说的话...'));
 		echo '<br>';
 		echo form_submit(array('value'=>'添加'));
 		echo form_close();
 	} else if($page == 'edit'){
 		echo anchor('/', '首页');
 		echo form_open('item/edit');
-		echo form_textarea(array('name'=>'title', 'placeholder'=>'输入话题...', 'value'=> $item['title']));
+		echo form_textarea(array('name'=>'title', 'placeholder'=>'输入想说的话...', 'value'=> $item['title']));
 		echo form_hidden('iid', $item['iid']);
 		echo '<br>';
 		echo form_submit(array('value'=>'更新'));

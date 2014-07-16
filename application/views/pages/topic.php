@@ -25,8 +25,8 @@
 
 	} else if($page == 'add'){
 		echo anchor('topic', '返回');
-		echo '<br>';
-		echo '添加一个话题';
+		echo '<br><br>';
+		echo '添加一个话题 :';
 		echo form_open('topic/add');
 		echo form_textarea(array('name'=>'text', 'placeholder'=>'输入话题...'));
 		echo '<br>';

@@ -17,20 +17,23 @@
 		echo anchor('/login', '登录', array('title'=>'登录'));
 	}
 
-	echo '<br><br>';
-	echo '本周话题：';
-	echo '<br><br>';
-	echo anchor('/topic/'. $topic['tid'], $topic['title']);
+	if(!empty($topic)){
+		echo '<br><br>';
+		echo '本周话题：';
+		echo '<br><br>';
+		echo anchor('/topic/'. $topic['tid'], $topic['title']);
+	}
 
-	echo '<br><br>';
-	echo '最新文章：';
-	echo '<br><br>';
-
-	foreach ($item as $k => $v) {
-		echo anchor('/item/'. $v['iid'], $v['text']);
-		echo 'by:'.anchor('/user/'.$v['author_id'] , $this->users->get_nickname($v['author_id']));
-		echo '<br>';
-		echo '<br>';
+	if(!empty($item)){
+		echo '<br><br>';
+		echo '最新文章：';
+		echo '<br><br>';
+		foreach ($item as $k => $v) {
+			echo anchor('/item/'. $v['iid'], $v['text']);
+			echo 'by:'.anchor('/user/'.$v['author_id'] , $this->users->get_nickname($v['author_id']));
+			echo '<br>';
+			echo '<br>';
+		}
 	}
 
 	$this->load->view('templates/footer');

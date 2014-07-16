@@ -26,5 +26,20 @@
 			return $user;
 		}
 
+		public function get_ID(){
+			$user = $this->get_current_user();
+			return $user['uid'];
+		}
+
+		public function get_nickname(){
+			$user = $this->get_current_user();
+			return $user['nickname'];
+		}
+
+		public function get_mail(){
+			$user = $this->get_current_user();
+			return $user['mail'];
+		}
+
 	}
 ?>

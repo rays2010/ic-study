@@ -72,12 +72,41 @@ CREATE TABLE `musics` (
 -- ----------------------------
 DROP TABLE IF EXISTS `relationships`;
 CREATE TABLE `relationships` (
-  `pid` int(10) unsigned NOT NULL COMMENT '父',
-  `cid` int(10) unsigned NOT NULL COMMENT '从属',
-  PRIMARY KEY (`pid`,`cid`)
+  `parent_id` int(10) unsigned NOT NULL COMMENT '父',
+  `child_id` int(10) unsigned NOT NULL COMMENT '从属',
+  PRIMARY KEY (`parent_id`,`child_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+-- ----------------------------
+-- 私信表
+-- ----------------------------
 
+DROP TABLE IF EXISTS `letters`;
+CREATE TABLE `letters` (
+  `lid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '私信表主键',
+  `content` text NOT NULL COMMENT '正文',
+  `sender_id` int(11) unsigned NOT NULL COMMENT '发信人id',
+  `receiver_id` int(11) unsigned NOT NULL COMMENT '收信人id',
+  `parent_id` int(11) unsigned NOT NULL COMMENT '父id',
+  `created` datetime NOT NULL COMMENT '内容生成时的GMT unix时间戳',
+  `modified` datetime NOT NULL COMMENT '内容更改时的GMT unix时间戳',
+  PRIMARY KEY (`lid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
+-- ----------------------------
+-- 评论表
+-- ----------------------------
 
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE `comments` (
+  `cid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论表主键',
+  `item_id` int(10) unsigned NOT NULL COMMENT '所属文章id',
+  `author_id` int(11) unsigned NOT NULL COMMENT '评论作者id',
+  `parent_id` int(11) unsigned NOT NULL COMMENT '父评论id',
+  `content` varchar(200) NOT NULL COMMENT '正文',
+  `agent` varchar(255) NOT NULL COMMENT '用户代理信息',
+  `ip`  varchar(100) NOT NULL COMMENT '用户ip',
+  `created` datetime NOT NULL COMMENT '内容生成时的GMT unix时间戳',
+  PRIMARY KEY (`cid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;

@@ -41,17 +41,19 @@
 			);
 
 			// 输出模板
-			$this->load->view('pages /item', $data);
+			$this->load->view('pages/item', $data);
 		}
 
 		public function edit($id = 0){
 
-			if(!$this->items->can_edit($id)) redirect('/');
+			// if(!$this->items->can_edit($id)) redirect('/');
 
 			// 请求处理
 			$title = $this->input->post('title');
 			$iid = $this->input->post('iid');
 			if(!empty($title) && !empty($iid)){
+
+				if(!$this->items->can_edit($iid)) redirect('/');
 
 				$this->items->edit_item($iid, array(
 					'title' => $title,
@@ -70,14 +72,16 @@
 				// 输出模板
 				$this->load->view('pages/item', $data);
 			}
-
-			
-
 		}
-		
 
-		public function del($iid){
-			echo 'del -'.$iid;
+		public function del($id = 0){
+			if($id !== 0 && $this->items->can_edit($id)){
+				$this->items->del_item($id);
+				$user = $this->auth->get_current_user();
+				redirect('user/'.$user['uid']);
+			} else {
+				redirect('/');
+			}
 		}
 	}
 
