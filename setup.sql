@@ -88,7 +88,7 @@ CREATE TABLE `letters` (
   `content` text NOT NULL COMMENT '正文',
   `sender_id` int(11) unsigned NOT NULL COMMENT '发信人id',
   `receiver_id` int(11) unsigned NOT NULL COMMENT '收信人id',
-  `parent_id` int(11) unsigned NOT NULL COMMENT '父id',
+  `unread` int(11) unsigned NOT NULL COMMENT '父id',
   `created` datetime NOT NULL COMMENT '内容生成时的GMT unix时间戳',
   `modified` datetime NOT NULL COMMENT '内容更改时的GMT unix时间戳',
   PRIMARY KEY (`lid`)

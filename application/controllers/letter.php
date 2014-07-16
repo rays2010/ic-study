@@ -25,6 +25,7 @@
 				$nickname = $this->users->get_nickname($id);
 				if(empty($nickname)) show_404();
 
+				$this->letters->set_readed($id);
 				$list = $this->letters->fetch($id);
 
 				// 模板变量
@@ -46,7 +47,13 @@
 			$text = $this->input->post('text');
 			if(!empty($text)){
 				$this->letters->add($id, $text);
+				redirect('letter/'.$id);
 			}
+		}
+
+		public function del($id){
+			$this->letters->del($id);
+			redirect('/letter');
 		}
 	}
 
