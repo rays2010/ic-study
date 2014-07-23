@@ -15,7 +15,26 @@
 		echo '<br>';
 		echo $item['status'];
 		echo '<br>';
+		echo '<br>';
+		echo '<br>';
 		echo '评论数'.$item['comment_count'];
+		echo '<br>';
+
+		foreach ($comment as $k => $v) {
+			echo $v['content'];
+			echo 'by:'.anchor('/user/'.$v['author_id'] , $this->users->get_nickname($v['author_id']));
+			echo '<br>';
+			echo 'at:'.$v['created'];
+			echo '<br>';
+			echo '<br>';
+		}
+
+		echo form_open('comment/add/'.$item['iid']);
+		echo form_textarea(array('name'=>'text', 'placeholder'=>'输入想说的话...', 'value'=> ''));
+		echo form_hidden('iid', $item['iid']);
+		echo '<br>';
+		echo form_submit(array('value'=>'评论'));
+		echo form_close();
 	} else if($page == 'add'){
 		echo anchor('/', '首页');
 		echo '<br><br>';

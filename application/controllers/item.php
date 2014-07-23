@@ -4,7 +4,7 @@
 
 		public function __construct(){
 			parent::__construct();
-			$this->load->model(array('items', 'users'));
+			$this->load->model(array('items', 'users', 'comments'));
 		}
 
 		public function index($id){
@@ -18,7 +18,8 @@
 			$data = array(
 				'title' => '文章',
 				'page' => 'index',
-				'item' => $this->items->get_item_by_id($id)
+				'item' => $this->items->get_item_by_id($id),
+				'comment' => $this->comments->get_comments($id),
 			);
 
 			// 输出模板
@@ -83,6 +84,7 @@
 				redirect('/');
 			}
 		}
+
 	}
 
 ?>
