@@ -23,6 +23,7 @@
 
 		public function get_current_user(){
 			$user = unserialize($this->_CI->session->userdata('user'));
+			if(empty($user)) redirect('/login');
 			return $user;
 		}
 

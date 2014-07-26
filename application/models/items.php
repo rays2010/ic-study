@@ -26,7 +26,7 @@
 		}
 
 		public function add_item($text){
-			$user = unserialize($this->session->userdata('user'));
+			$user = $this->auth->get_current_user();
 			$data = array(
 				'title' => $text,
 				'slug' => '-',

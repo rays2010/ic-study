@@ -15,7 +15,44 @@
 		echo '<br>';
 		echo $item['status'];
 		echo '<br>';
-		echo '评论数'.$item['comment_count'];
+		echo '<br>';
+		echo '<br>';
+		echo '评论数'.count($comment);
+		echo '<br>';
+		echo '<br>';
+
+		foreach ($comment as $k => $v) {
+			$nickname = $this->users->get_nickname($v['author_id']);
+
+			if($v['parent_id'] == 0){
+				echo $v['content'];
+				echo 'by:'.anchor('/user/'.$v['author_id'] , $nickname);
+				echo '<br>';
+				echo 'at:'.$v['created'];
+				echo '<br>';
+				echo form_open('comment/reply/'.$v['cid']);
+				echo form_input(array('name'=>'text', 'placeholder'=>'回复'.$nickname.'...'));
+				echo form_hidden('cid', $v['cid']);
+				echo form_hidden('iid', $v['item_id']);
+				echo form_submit(array('value'=>'回复'));
+				echo form_close();
+			} else {
+				foreach ($comment as $kk => $vv) {
+					if($v['parent_id'] == $vv['cid']){
+						echo '<br>';
+						echo $v['content'];
+						echo '<br>';
+					}
+				}
+			}
+		}
+
+		echo form_open('comment/add/'.$item['iid']);
+		echo form_textarea(array('name'=>'text', 'placeholder'=>'输入想说的话...', 'value'=> ''));
+		echo form_hidden('iid', $item['iid']);
+		echo '<br>';
+		echo form_submit(array('value'=>'评论'));
+		echo form_close();
 	} else if($page == 'add'){
 		echo anchor('/', '首页');
 		echo '<br><br>';
