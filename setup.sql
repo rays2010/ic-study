@@ -37,7 +37,7 @@ CREATE TABLE `items` (
   PRIMARY KEY (`iid`),
   KEY `created` (`created`),
   KEY `author_id` (`author_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 -- ----------------------------
 -- 话题表

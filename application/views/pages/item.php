@@ -23,26 +23,27 @@
 
 		foreach ($comment as $k => $v) {
 			$nickname = $this->users->get_nickname($v['author_id']);
+			echo $v['content'];
+			echo 'by:'.anchor('/user/'.$v['author_id'] , $nickname);
+			echo '<br>';
+			echo 'at:'.$v['created'];
+			echo '<br>';
+			echo form_open('comment/reply/'.$v['cid']);
+			echo form_input(array('name'=>'text', 'placeholder'=>'回复'.$nickname.'...'));
+			echo form_hidden('cid', $v['cid']);
+			echo form_hidden('iid', $v['item_id']);
+			echo form_submit(array('value'=>'回复'));
+			echo form_close();
 
-			if($v['parent_id'] == 0){
-				echo $v['content'];
-				echo 'by:'.anchor('/user/'.$v['author_id'] , $nickname);
-				echo '<br>';
-				echo 'at:'.$v['created'];
-				echo '<br>';
-				echo form_open('comment/reply/'.$v['cid']);
-				echo form_input(array('name'=>'text', 'placeholder'=>'回复'.$nickname.'...'));
-				echo form_hidden('cid', $v['cid']);
-				echo form_hidden('iid', $v['item_id']);
-				echo form_submit(array('value'=>'回复'));
-				echo form_close();
-			} else {
-				foreach ($comment as $kk => $vv) {
-					if($v['parent_id'] == $vv['cid']){
-						echo '<br>';
-						echo $v['content'];
-						echo '<br>';
-					}
+			if(!empty($v['child'])){
+				foreach ($v['child'] as $kk => $vv) {
+					$nickname2 = $this->users->get_nickname($vv['author_id']);
+					echo $vv['content'];
+					echo 'by:'.anchor('/user/'.$vv['author_id'] , $nickname2);
+					echo '<br>';
+					echo 'at:'.$vv['created'];
+					echo '<br>';
+					echo '<br>';
 				}
 			}
 		}

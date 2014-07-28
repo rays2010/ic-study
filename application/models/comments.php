@@ -7,7 +7,20 @@
 
 		public function get_comments($iid){
 			$query = $this->db->select('*')->get_where('comments', array('item_id'=>$iid));
-			return $query->result_array();
+			$result = $query->result_array();
+			$new = array();
+			foreach ($result as $k => $v) {
+				if($v['parent_id'] == 0){
+					$v['child'] = array();
+					foreach ($result as $kk => $vv) {
+						if($vv['parent_id'] == $v['cid']){
+							array_push($v['child'], $vv);
+						}
+					}
+					array_push($new, $v);
+				}
+			}
+			return $new;
 		}
 
 		public function add_comment($iid, $text, $parent_id=0){
