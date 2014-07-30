@@ -1170,13 +1170,14 @@ header {
 
 #main {
   width: 1000px;
-  margin: 30px auto; }
+  margin: 20px auto; }
 
 #content {
   width: 700px;
   float: left; }
   #content .item {
-    overflow: hidden; }
+    overflow: hidden;
+    margin: 0 0 20px; }
     #content .item .avatar {
       float: left; }
       #content .item .avatar img {
@@ -1184,7 +1185,6 @@ header {
         height: 50px; }
     #content .item .panel {
       padding: 20px;
-      margin: 0 0 20px;
       float: left;
       width: 560px;
       background: #fff;
@@ -1207,6 +1207,34 @@ header {
         margin: 0 0 10px; }
         #content .item .panel .cover img {
           max-height: 200px; }
+  #content .item_topic {
+    margin: 0 0 20px; }
+    #content .item_topic .cover {
+      float: left; }
+      #content .item_topic .cover img {
+        width: 300px;
+        height: 300px; }
+    #content .item_topic a {
+      color: #37b1e8; }
+    #content .item_topic .panel {
+      background: #fff;
+      height: 300px;
+      width: 650px; }
+    #content .item_topic .wrap {
+      float: left;
+      padding: 20px;
+      width: 300px; }
+      #content .item_topic .wrap h2 {
+        font-size: 14px;
+        margin: 0 0 10px;
+        color: #37b1e8; }
+      #content .item_topic .wrap .time {
+        color: #666; }
+      #content .item_topic .wrap .text {
+        font-size: 12px;
+        height: 200px;
+        border-bottom: 1px dotted #eaeaea;
+        margin: 0 0 10px; }
 
 #side {
   width: 300px;
@@ -1242,15 +1270,17 @@ header {
     background: #333; }
   #side .topic .content a {
     color: #307c9e; }
-  #side .guest .content a {
+  #side .noname .content a {
     color: #307c9e; }
+  #side .desc {
+    margin: 36px 0 0; }
 
 #add_post h2 {
   color: #fff;
   font-size: 20px;
   margin: 0 0 20px; }
 #add_post .attach {
-  width: 600px;
+  width: 628px;
   background: #fff;
   padding: 10px;
   border: 1px solid #fff;
@@ -1262,7 +1292,7 @@ header {
     #add_post .attach li a {
       color: #37b1e8; }
 #add_post textarea {
-  width: 600px;
+  width: 628px;
   height: 300px;
   padding: 10px;
   font-size: 14px;

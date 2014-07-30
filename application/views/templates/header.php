@@ -17,7 +17,7 @@
 
 	<header id="header">
         <div class="wrap clearfix">
-            <h1 id="logo"><a href="/" title="失眠">失眠</a></h1>
+            <h1 id="logo"><a href="/" title="不眠">不眠</a></h1>
             <nav id="nav">
                 <ul class="list-h">
                     <li class="select"><a href="/" title="首页">首页</a></li>

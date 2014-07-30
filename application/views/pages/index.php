@@ -61,8 +61,32 @@
 					还有没睡觉的同学嘛
 				</div>
 				<div class="act">
+					<span>来自话题：</span><a href="">这么晚了你怎么还不睡觉</a>
 					<a href="" class="fr">赞（1）</a>
 					<a href="" class="fr mr15">聊天</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="item">
+			<a class="avatar" href=""><img src="img/noname.jpg" alt=""></a>
+			<div class="panel">
+				<div class="meta">
+					<a class="nickname" href="#">匿名信#11223</a>
+					<span class="time">于1分钟前</span>
+				</div>
+				<div class="cover">
+					
+				</div>
+				<div class="music">
+					<embed src="http://www.xiami.com/widget/0_1769477290/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed>
+				</div>
+				<div class="text">
+					睡不着，重复循环一首歌
+				</div>
+				<div class="act">
+					<span>来自：</span><a href="">匿名箱</a>
+					<a href="" class="fr">赞（1）</a>
 				</div>
 			</div>
 		</div>
@@ -109,11 +133,10 @@
 			</div>
 		</div>
 
-		<div class="cell guest">
+		<div class="cell noname">
 			<h3>匿名箱</h3> 
 			<div class="content">
-				<p>匿名信#1123：6月22日凌晨2点，delay两小时的飞机终于落地，踏出北京T3, 是老爸老妈焦急等待的雨的夜晚湿润潮热。
-				<a href="" class="">（123人回应）</a>
+				<p>匿名信一旦投递，将不再跟你有关联，别人会看到你发出的匿名信。
 				</p>
 				<a href="#" class="">写信</a><span>到匿名箱</span>
 			</div>

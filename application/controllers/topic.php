@@ -43,6 +43,7 @@
 			$data = array(
 				'title' => '添加话题',
 				'page' => 'add',
+				'current_user'  => $this->auth->get_current_user(),
 			);
 
 			// 模板输出

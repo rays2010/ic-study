@@ -63,11 +63,11 @@
 		echo form_textarea(array('name'=>'text', 'placeholder'=>'输入想说的话...'));
 		echo '<div class="clearfix">';
 		echo form_submit(array('value'=>'发布', 'class'=>'submit'));
-		echo '<a href="" title="" class="fl ml15 mt5">存为草稿</a>';
 		echo '</div>';
 		echo form_close();
 		echo '</div>';
 		echo '</div>';
+		echo '<div id="side"><div class="cell desc">投稿说明</div></div>';
 	} else if($page == 'edit'){
 		echo anchor('/', '首页');
 		echo form_open('item/edit');
