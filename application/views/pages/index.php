@@ -125,11 +125,13 @@
 		</div>
 	
 		<div class="cell topic">
-			<h3>本周话题</h3>
+			<h3>最新话题：失恋</h3>
 			<div class="content">
-				<p>在我不长的人生里，有很多告别 上学前班的当天，就学会了，朝校门口的妈妈用力挥手 小学毕业的最后一天，则是与同位合作把名字刻到课桌的桌洞里 高中或者大学……
-				<a href="" class="">（123人回应）</a>
-				</p>
+				<div class="clearfix text">
+				<img class="cover" src="img/cover.jpg" alt="">
+				手 小学毕业的最后一天，则是与同位合作把名字刻到课桌的桌洞里 高中或者大学……
+				<a href="" class="">（123人参与）</a>
+				</div>
 			</div>
 		</div>
 

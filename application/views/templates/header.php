@@ -22,19 +22,20 @@
                 <ul class="list-h">
                     <li class="select"><a href="/" title="首页">首页</a></li>
                     <li><a href="/topic" title="话题">话题</a></li>
-                    <li><a href="/" title="匿名箱">匿名箱</a></li>
+                    <li><a href="/noname" title="匿名箱">匿名箱</a></li>
                 </ul>
             </nav>
             <div id="user">
 				<?php if($current_user['is_login']){ ?>
 				<div class="login">
 					<a class="avatar" href="#" title=""><?php echo $current_user['nickname']; ?></a>
-					<a class="msg" href="">未读消息（<span>0</span>）</a>
+					<a class="msg" href="">消息（<span>3条未读</span>）</a>
 					<a class="down" href="#">+</a>
 	    			<ul class="drop">
 	    				<li><?php echo anchor('/user/'.$current_user['uid'], '个人主页'); ?></li>
 		            	<li><a href="/item/add">添加文章</a></li>
 		            	<li><a href="/topic/add">添加话题</a></li>
+                        <li><a href="/setting">设置</a></li>
 		            	<li><a title="退出" href="/logout">退出</a></li>
 	    			</ul>
     			</div>

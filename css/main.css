@@ -1170,14 +1170,14 @@ header {
 
 #main {
   width: 1000px;
-  margin: 20px auto; }
+  margin: 30px auto; }
 
 #content {
   width: 700px;
   float: left; }
   #content .item {
     overflow: hidden;
-    margin: 0 0 20px; }
+    margin: 0 0 30px; }
     #content .item .avatar {
       float: left; }
       #content .item .avatar img {
@@ -1186,7 +1186,7 @@ header {
     #content .item .panel {
       padding: 20px;
       float: left;
-      width: 560px;
+      width: 580px;
       background: #fff;
       box-shadow: 0px 1px 2px #000; }
       #content .item .panel .meta {
@@ -1208,7 +1208,7 @@ header {
         #content .item .panel .cover img {
           max-height: 200px; }
   #content .item_topic {
-    margin: 0 0 20px; }
+    margin: 0 0 30px; }
     #content .item_topic .cover {
       float: left; }
       #content .item_topic .cover img {
@@ -1219,7 +1219,7 @@ header {
     #content .item_topic .panel {
       background: #fff;
       height: 300px;
-      width: 650px; }
+      width: 670px; }
     #content .item_topic .wrap {
       float: left;
       padding: 20px;
@@ -1268,6 +1268,13 @@ header {
       color: #fff; }
   #side .countdown:hover {
     background: #333; }
+  #side .topic .text {
+    line-height: 1.5em; }
+  #side .topic .cover {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin: 0 10px 0 0; }
   #side .topic .content a {
     color: #307c9e; }
   #side .noname .content a {
@@ -1280,7 +1287,7 @@ header {
   font-size: 20px;
   margin: 0 0 20px; }
 #add_post .attach {
-  width: 628px;
+  width: 648px;
   background: #fff;
   padding: 10px;
   border: 1px solid #fff;
@@ -1292,7 +1299,7 @@ header {
     #add_post .attach li a {
       color: #37b1e8; }
 #add_post textarea {
-  width: 628px;
+  width: 648px;
   height: 300px;
   padding: 10px;
   font-size: 14px;
@@ -1309,6 +1316,22 @@ header {
   background: #37b1e8;
   color: #fff;
   border: none; }
+
+#home {
+  text-align: center;
+  color: #fff;
+  margin: 30px 0 60px; }
+  #home h2 {
+    font-size: 14px; }
+  #home img {
+    display: inline-block;
+    margin: 0 0 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px; }
+  #home .mail {
+    padding: 0 0 0 10px;
+    color: #37b1e8; }
 
 footer {
   width: 100%;
