@@ -14,12 +14,14 @@
 					'title' => '历史话题',
 					'page' => 'index',
 					'topics' => $this->topics->get_topics(),
+					'current_user'  => $this->auth->get_current_user(),
 				);
 			} else {
 				$data = array(
 					'title' => '话题',
 					'page' => 'single',
 					'topic' => $this->topics->get_topic($id),
+					'current_user'  => $this->auth->get_current_user(),
 				);
 			}
 

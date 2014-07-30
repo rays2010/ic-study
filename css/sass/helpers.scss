@@ -1,0 +1,44 @@
+// 样式
+.shadow-normal{
+    box-shadow: 1px 1px 3px 0 #ccc;
+}
+
+// 链接
+a:link,
+a:visited{
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+}
+
+a:hover,
+a:active{
+    color: $color-main;
+    text-decoration: none;
+}
+
+// li标签垂直显示
+.list-h{
+    overflow: hidden;
+    li{
+        float: left;
+    }
+}
+
+// 按钮
+
+.button-follow:link,
+.button-follow:visited{
+	padding: 5px 10px;
+	display: inline-block;
+	border-radius: 5px;
+	border: 1px solid #a93b3b;
+	background: $color-white;
+	color: #da5454
+}
+
+.button-follow:hover,
+.button-follow:active{
+	color: $color-main;
+	border: 1px solid $color-main;
+}

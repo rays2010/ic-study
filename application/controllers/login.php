@@ -25,6 +25,7 @@
 			// 模板变量
 			$data = array(
 				'title' => '登录',
+				'current_user'  => $this->auth->get_current_user(),
 			);
 
 			// 模板输出

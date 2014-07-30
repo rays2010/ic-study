@@ -11,7 +11,7 @@
 			// 模板变量
 			$data = array(
 				'title' => '首页',
-				'user'  => $this->auth->get_current_user(),
+				'current_user'  => $this->auth->get_current_user(),
 				'item'  => $this->items->get_items(),
 				'topic' => $this->topics->get_recent_topic(),
 			);

@@ -55,14 +55,19 @@
 		echo form_submit(array('value'=>'评论'));
 		echo form_close();
 	} else if($page == 'add'){
-		echo anchor('/', '首页');
-		echo '<br><br>';
-		echo '添加文章：';
+		echo '<div id="content">';
+		echo '<div id="add_post">';
+		echo '<h2>添加文章</h2>';
 		echo form_open('item/add');
+		echo '<ul class="attach"><li><a href="">添加图片</a></li><li><a href="">添加音乐</a></li></ul>';
 		echo form_textarea(array('name'=>'text', 'placeholder'=>'输入想说的话...'));
-		echo '<br>';
-		echo form_submit(array('value'=>'添加'));
+		echo '<div class="clearfix">';
+		echo form_submit(array('value'=>'发布', 'class'=>'submit'));
+		echo '<a href="" title="" class="fl ml15 mt5">存为草稿</a>';
+		echo '</div>';
 		echo form_close();
+		echo '</div>';
+		echo '</div>';
 	} else if($page == 'edit'){
 		echo anchor('/', '首页');
 		echo form_open('item/edit');

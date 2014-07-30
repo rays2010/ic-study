@@ -35,10 +35,15 @@
 				echo '添加成功';
 			}
 
+			// 是否登录
+			$current_user = $this->auth->get_current_user();
+			if(empty($current_user)) redirect('/login');
+
 			// 模板变量
 			$data = array(
 				'title' => '添加文章',
 				'page' => 'add',
+				'current_user'  => $current_user,
 			);
 
 			// 输出模板

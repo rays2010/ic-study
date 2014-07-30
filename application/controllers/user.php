@@ -25,6 +25,7 @@
 			// 模板变量
 			$data = array(
 				'title' => '个人主页',
+				'current_user'  => $this->auth->get_current_user(),
 				'user' => $this->users->get_user($id),
 				'item' => $this->items->get_item_by_user($id),
 				'is_owner' => $is_owner,

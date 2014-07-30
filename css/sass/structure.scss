@@ -1,0 +1,326 @@
+@import 'vars';
+
+body,html{
+    font-size: $font-small;
+    background: #222;
+    line-height: 1.4em;
+}
+
+// 包裹类
+.wrap{
+    width: $length-body-width;
+    margin: 0 auto;
+    // border: 1px solid;
+}
+
+// 页眉
+header{
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px solid #333;
+
+    #logo{
+        float: left;
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        font-size: 30px;
+    }
+    
+    // 主导航
+    #nav{
+        float: left;
+
+        li a{
+            font-size: $font-normal;
+            display: block;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            color: #666;
+        }
+
+        li:last-child a{
+
+        }
+
+        li.select a{
+            color: #fff;
+        }
+
+        li a:hover{
+            color: $color-main;
+        }
+    }
+    
+    // 用户登录信息
+    #user{
+        float: right;
+        color: #fff;
+
+        a{
+            font-size: 14px;
+            display: inline-block;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+        }
+
+        .login{
+
+            float: right;
+            position: relative;
+
+            .drop{
+                display: none;
+                position: absolute;
+                width: 150px;
+                top: 60px;
+                right: 0;
+                background: $color-white;
+                border: 1px solid $color-light-gray;
+                box-shadow: 1px 1px 3px 0 #000;
+                z-index: 9999;
+
+                a{
+                    width: 150px;
+                    height: 40px;
+                    line-height: 40px;
+                    text-align: left;
+                    text-indent: 2em;
+                    color: #333;
+                }
+
+                a:hover{
+                    background: $color-lighter-gray;    
+                }
+            }
+
+            .msg,
+            .avatar,
+            .down{
+                float: left;
+                display: inline-block;
+                text-align: center;
+                padding: 0 0 0 10px;
+                font-size: 12px;
+            }
+
+            .down{
+                width: 30px;
+            }
+
+            .msg span{
+                color: $color-main;
+            }
+
+            .avatar img{
+                width: 25px;
+                height: 25px;
+            }
+
+        }
+    }
+
+}
+
+// 页面主体
+#main{
+    width: $length-body-width;
+    margin: 30px auto;
+}
+
+#content{       
+    width: 700px;
+    float: left;
+
+    .item{
+        overflow: hidden;
+
+        .avatar{
+            float: left;
+            img{
+                width: 50px;
+                height: 50px;
+            }
+        }
+        .panel{
+            padding: 20px;
+            margin: 0 0 20px;
+            float: left;
+            width: 560px;
+            background: #fff;
+            box-shadow: 0px 1px 2px #000;
+
+            .meta{
+                margin: 0 0 20px;
+            }
+
+            a{
+                font-size: 14px;
+                color: #10729e;
+            }
+
+            .time{
+                color: #999;
+            }
+
+            .text{
+                font-size: 14px;
+                margin: 0 0 10px;
+                padding: 0 0 15px;
+                border-bottom: 1px solid #f2f2f2;
+            }
+
+            .music{
+                margin: 0 0 10px;
+            }
+
+            .cover{
+               margin: 0 0 10px;
+               img{
+                 max-height: 200px;
+               }
+            }
+        }
+    }
+}
+
+#side{
+    width: 300px;
+    float: right;
+
+    // 格子
+    
+    .cell{
+        width: 260px;
+        padding: 20px;
+        background: #ddd;
+        border-bottom: 1px solid #ccc;
+
+        a{
+            color: #333;
+        }
+
+        h3{
+            color: #307c9e;
+            font-size: 14px;
+            margin: 0 0 10px;
+        }
+        p{
+            margin: 0 0 10px;
+        }
+    }
+
+    .cell:hover{
+        background: #fff;
+    }
+
+    // 写文章
+
+    .add{
+        box-shadow: 0px 1px 2px #000;
+        a{
+            font-size: 20px;
+            line-height: 1em;
+        }
+    }
+
+    // 倒计时
+
+    .countdown{
+        background: #333;
+        color: #999;
+
+        span{
+            font-size: 18px;
+            padding: 0 5px;
+            color: #fff;
+        }
+    }
+
+    .countdown:hover{
+        background: #333;
+    }
+
+    // 话题
+
+    .topic{
+        .content a{
+            color: #307c9e;
+        }
+    }
+
+    // 匿名
+
+    .guest{
+        .content a{
+            color: #307c9e;
+        }
+    }
+}
+
+// 添加文章
+#add_post{
+
+    h2{
+        color: #fff;
+        font-size: 20px;
+        margin: 0 0 20px;
+    }
+
+    .attach{
+        width: 600px;
+        background: #fff;
+        padding: 10px;
+        border: 1px solid #fff;
+        overflow: hidden;
+        border-bottom: 1px solid #eaeaea;
+
+        li{
+            float: left;
+            margin: 0 10px 0 0px;
+            a{
+                color: #37b1e8;
+            }
+        }
+    }
+
+    textarea{
+        width: 600px;
+        height: 300px;
+        padding: 10px;
+        font-size: 14px;
+        color: #333;
+        resize: none;
+        border: 1px solid #fff;
+        margin: 0 0 20px;
+        background: #fff;
+    }
+
+    input.submit{
+        float: left;
+        display: block;
+        width: 150px;
+        height: 30px;
+        background: #37b1e8;
+        color: #fff;
+        border: none;
+    }
+
+}
+
+// 页眉
+footer{
+    width: 100%;
+    margin: 50px 0;
+    text-align: center;
+
+    color: #666;
+
+    a,
+    span{
+        padding: 0 5px;
+    }
+}
