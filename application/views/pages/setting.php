@@ -26,18 +26,25 @@
 		echo '</p>';
 		echo form_close();
 	} else if ($page == 'avatar') {
-		echo form_open('setting/avatar');
+
+		echo form_open_multipart('setting/avatar');
 		echo '<h3>修改头像</h3>';
 		echo '<p>';
 		echo form_label('当前头像', '');
+		if(!empty($img_url)){
+		echo '<img width=100 height=100 src="'.image($img_url, 'square').'" alt="">';
+		}
 		echo form_open_multipart('upload/do_upload');
 		echo '<input type="file" name="userfile" size="20" />';
-		echo '<input type="submit" value="upload" />';
 		echo '</p> <p>';
 		echo form_label('', '');
-		echo form_submit(array('value' => '保存修改', 'class'=>'confirm')); 
+		echo ($error);
+		echo '</p> <p>';
+		echo form_label('', '');
+		echo form_submit(array('value' => '上传', 'class'=>'confirm')); 
 		echo '</p>';
 		echo form_close();
+
 	} else if ($page == 'pw'){
 		echo form_open('setting/pw');
 		echo '<h3>修改密码</h3>';

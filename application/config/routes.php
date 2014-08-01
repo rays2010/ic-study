@@ -46,6 +46,7 @@ $route['item/edit/(:num)'] = 'item/edit/$1';
 $route['topic/(:num)'] = 'topic/index/$1';
 $route['letter/(:num)'] = 'letter/index/$1';
 $route['comment/add/(:num)'] = 'comment/add/$1';
+$route['upload/(:any)'] = 'media/resize/$1';
 
 // $route['news/create'] = 'news/create';
 // $route['news'] = 'news/index';
