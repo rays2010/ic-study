@@ -29,17 +29,12 @@
 	// }
 ?>
 
-<div id="home">
-	<img src="../img/avatar2.jpg" alt="">
-	<h2>奇犽·揍敌客 <a href="" class="mail">私信</a></h2>
-</div>
-
 <div id="content">
 	<div class="item">
-		<a class="avatar" href=""><img src="../img/avatar1.jpg" alt=""></a>
+		<a class="avatar" href=""><img src="../img/avatar2.jpg" alt=""></a>
 		<div class="panel">
 			<div class="meta">
-				<a class="nickname" href="#">睡不着先生一号</a>
+				<a class="nickname" href="#">奇犽·揍敌客</a>
 				<span class="time">于1分钟前</span>
 			</div>
 			<div class="text">
@@ -59,10 +54,10 @@
 	</div>
 
 	<div class="item">
-		<a class="avatar" href=""><img src="../img/avatar1.jpg" alt=""></a>
+		<a class="avatar" href=""><img src="../img/avatar2.jpg" alt=""></a>
 		<div class="panel">
 			<div class="meta">
-				<a class="nickname" href="#">睡不着先生一号</a>
+				<a class="nickname" href="#">奇犽·揍敌客</a>
 				<span class="time">于1分钟前</span>
 			</div>
 			<div class="cover">
@@ -81,10 +76,10 @@
 
 
 	<div class="item">
-		<a class="avatar" href=""><img src="../img/avatar1.jpg" alt=""></a>
+		<a class="avatar" href=""><img src="../img/avatar2.jpg" alt=""></a>
 		<div class="panel">
 			<div class="meta">
-				<a class="nickname" href="#">睡不着先生一号</a>
+				<a class="nickname" href="#">奇犽·揍敌客</a>
 				<span class="time">于1分钟前</span>
 			</div>
 			<div class="cover">
@@ -105,6 +100,12 @@
 </div>
 
 <div id="side">
+	<div class="cell card clearfix">
+		<img src="../img/avatar2.jpg" alt="">
+		<h2>奇犽·揍敌客</h2>
+		<span>现居：北京</span>
+		<a href="" class="mail">私信</a>
+	</div>
 	<div class="cell">
 		发表文章（33）
 	</div>

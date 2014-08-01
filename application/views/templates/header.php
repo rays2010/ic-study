@@ -40,7 +40,7 @@
 	    			</ul>
     			</div>
 				<?php } else { ?>
-            	<a title="注册" href="http://local.ci.com/reg">注册</a>
+            	<a title="快速注册" class="pr15" href="http://local.ci.com/reg">快速注册</a>
             	<a title="登录" href="http://local.ci.com/login">登录</a>
             	<?php } ?>
             </div>

@@ -13,6 +13,7 @@
 			$data = array(
 				'title' => '注册',
 				'page' => 'index',
+				'current_user'  => $this->auth->get_current_user(),
 			);
 
 			// 模板渲染
@@ -40,6 +41,7 @@
 				'title' => '注册',
 				'page' => $page,
 				'error' => $result,
+				'current_user'  => $this->auth->get_current_user(),
 			);
 
 			// 模板输出

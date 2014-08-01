@@ -80,7 +80,7 @@ header{
                 right: 0;
                 background: $color-white;
                 border: 1px solid $color-light-gray;
-                box-shadow: 1px 1px 3px 0 #000;
+                box-shadow: 1px 1px 3px 0 #666;
                 z-index: 9999;
 
                 a{
@@ -318,6 +318,29 @@ header{
     .desc{
         margin: 36px 0 0;
     }
+
+    // 个人主页
+    .card{
+        width: 100%;
+        padding: 0;
+
+        h2{
+            font-size: 18px;
+            padding: 10px;
+        }
+        img{
+            display: block;
+            width: 100px;
+            height: 100px;
+            // border-radius: 100px;
+            float: left;
+            margin: 0 10px 0 0;
+        }
+        .mail{
+            padding: 0 0 0 10px;
+            color: $color-main;
+        }
+    }
 }
 
 // 添加文章
@@ -369,25 +392,97 @@ header{
     }
 }
 
-#home{
-    text-align: center;
-    color: #fff;
-    margin: 30px 0 60px;
-    h2{
-        font-size: 14px;
+// 修改资料
+#setting{
+    background: #fff;
+    width: 610px;
+    padding: 30px;
+
+    h3{
+        font-size: 18px;
+        margin: 0 0 20px 70px;
     }
-    img{
-        display: inline-block;
+
+    p{
+        overflow: hidden;
         margin: 0 0 20px;
-        width: 100px;
-        height: 100px;
-        border-radius: 100px;
     }
-    .mail{
-        padding: 0 0 0 10px;
-        color: $color-main;
+
+    label{
+        width: 50px;
+        text-align: right;
+        float: left;
+        height: 30px;
+        line-height: 30px;
+        margin: 0 20px 0 0;
+    }
+
+    input{
+        display: block;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        width: 200px;
+        background: #fff;
+    }
+
+    input.confirm{
+        border: none;
+        width: 100px;
+        background: $color-main;
+        color: #fff;
     }
 }
+
+// 注册&&登录
+#start{
+    
+    text-align: center;
+
+    h2{
+        font-size: 20px;
+        color: #fff;
+        margin: 50px 0;
+    }
+
+    a{
+        color: $color-main;
+    }
+
+    input{
+        font-size: 14px;
+        display: block;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        width: 200px;
+        background: #fff;
+        margin: 0 0 10px;
+    }
+
+    input.confirm{
+        border: none;
+        width: 100px;
+        background: $color-main;
+        color: #fff;
+    }
+
+    .login{
+        h3{
+            font-size: 14px;
+            margin: 0 0 10px;
+        }
+
+        text-align: left;
+        width: 370px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 50px;
+        border-radius: 2px;
+    }
+}
+
+
 
 // 页眉
 footer{

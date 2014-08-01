@@ -51,7 +51,7 @@ header {
         right: 0;
         background: white;
         border: 1px solid #eeeeee;
-        box-shadow: 1px 1px 3px 0 #000;
+        box-shadow: 1px 1px 3px 0 #666;
         z-index: 9999; }
         header #user .login .drop a {
           width: 150px;
@@ -191,6 +191,21 @@ header {
     color: #307c9e; }
   #side .desc {
     margin: 36px 0 0; }
+  #side .card {
+    width: 100%;
+    padding: 0; }
+    #side .card h2 {
+      font-size: 18px;
+      padding: 10px; }
+    #side .card img {
+      display: block;
+      width: 100px;
+      height: 100px;
+      float: left;
+      margin: 0 10px 0 0; }
+    #side .card .mail {
+      padding: 0 0 0 10px;
+      color: #37b1e8; }
 
 #add_post h2 {
   color: #fff;
@@ -227,21 +242,68 @@ header {
   color: #fff;
   border: none; }
 
-#home {
-  text-align: center;
-  color: #fff;
-  margin: 30px 0 60px; }
-  #home h2 {
-    font-size: 14px; }
-  #home img {
-    display: inline-block;
-    margin: 0 0 20px;
+#setting {
+  background: #fff;
+  width: 610px;
+  padding: 30px; }
+  #setting h3 {
+    font-size: 18px;
+    margin: 0 0 20px 70px; }
+  #setting p {
+    overflow: hidden;
+    margin: 0 0 20px; }
+  #setting label {
+    width: 50px;
+    text-align: right;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 20px 0 0; }
+  #setting input {
+    display: block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    width: 200px;
+    background: #fff; }
+  #setting input.confirm {
+    border: none;
     width: 100px;
-    height: 100px;
-    border-radius: 100px; }
-  #home .mail {
-    padding: 0 0 0 10px;
+    background: #37b1e8;
+    color: #fff; }
+
+#start {
+  text-align: center; }
+  #start h2 {
+    font-size: 20px;
+    color: #fff;
+    margin: 50px 0; }
+  #start a {
     color: #37b1e8; }
+  #start input {
+    font-size: 14px;
+    display: block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    width: 200px;
+    background: #fff;
+    margin: 0 0 10px; }
+  #start input.confirm {
+    border: none;
+    width: 100px;
+    background: #37b1e8;
+    color: #fff; }
+  #start .login {
+    text-align: left;
+    width: 370px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 50px;
+    border-radius: 2px; }
+    #start .login h3 {
+      font-size: 14px;
+      margin: 0 0 10px; }
 
 footer {
   width: 100%;
