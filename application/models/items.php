@@ -22,9 +22,15 @@
 		}
 
 		public function get_item_by_user($id){
+			$this->db->select('uid, iid, text, type, avatar, nickname, items.cover, items.created, t_title');
+			$this->db->from('items');
 			$this->db->order_by('created', 'desc');
-			$query = $this->db->get_where('items', array('author_id' => $id));
-			return $query->result();
+			$this->db->join('users', 'users.uid = items.author_id', 'inner');
+			$this->db->join('topics', 'topics.tid = items.parent_id', 'left outer');
+			$this->db->where('users.uid', $id);
+			// $this->db->join('topics', 'topics.tid = items.parent_id');
+			$query = $this->db->get();
+			return $query->result_array();
 		}
 
 		public function add_item($text, $cover = ''){
