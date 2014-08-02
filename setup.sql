@@ -9,6 +9,7 @@ CREATE TABLE `users` (
   `mail` varchar(255) NOT NULL COMMENT '邮箱地址',
   `password` varchar(255) NOT NULL COMMENT '密码（md5加密）',
   `nickname` varchar(255) NOT NULL COMMENT '昵称',
+  `location` varchar(255) COMMENT '居住地',
   `avatar`   varchar(128) NOT NULL COMMENT '头像',
   `group`	varchar(16) NOT NULL COMMENT '所属组',
   `register_time` datetime NOT NULL COMMENT '注册时间',

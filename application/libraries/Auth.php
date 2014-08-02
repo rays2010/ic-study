@@ -13,6 +13,7 @@
 				'mail' => $user['mail'],
 				'nickname' => $user['nickname'],
 				'uid' => $user['uid'],
+				'avatar' => $user['avatar'],
 			);
 			$this->_CI->session->set_userdata(array('user'=> serialize($user)));
 		}

@@ -1,6 +1,6 @@
 <?php 
 
-	class Login extends CI_Controller{
+	class Login extends Public_Controller{
 
 		public function __construct(){
 			parent::__construct();
@@ -23,13 +23,13 @@
 			}
 
 			// 模板变量
-			$data = array(
+			$this->data['page'] = array(
 				'title' => '登录',
-				'current_user'  => $this->auth->get_current_user(),
+				'name' => 'name',
 			);
 
 			// 模板输出
-			$this->load->view('pages/login', $data);
+			$this->load->view('pages/login', $this->data);
 			
 		}
 	}

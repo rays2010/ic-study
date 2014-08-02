@@ -2,12 +2,12 @@
 
 	$this->load->view('templates/header');
 
-	// if(!empty($topic)){
-	// 	echo '<br><br>';
-	// 	echo '本周话题：';
-	// 	echo '<br><br>';
-	// 	echo anchor('/topic/'. $topic['tid'], $topic['title']);
-	// }
+	if(!empty($topic)){
+		echo '<br><br>';
+		echo '本周话题：';
+		echo '<br><br>';
+		echo anchor('/topic/'. $topic['tid'], $topic['title']);
+	}
 
 	// if(!empty($item)){
 	// 	echo '<br><br>';
@@ -22,30 +22,39 @@
 	// }
 
 ?>
-	
 	<div id="content">
+
+	<?php 
+		if(!empty($item)){ 
+		foreach ($item as $k => $v) {
+	?>
 		<div class="item">
-			<a class="avatar" href=""><img src="img/avatar1.jpg" alt=""></a>
+			<a class="avatar" href=""><?php echo img(image($v['avatar'], 'square')); ?></a>
 			<div class="panel">
 				<div class="meta">
-					<a class="nickname" href="#">睡不着先生一号</a>
-					<span class="time">于1分钟前</span>
+					<?php echo anchor('/user/'.$v['uid'] , $v['nickname'], array('class'=>'nickname')); ?>
+					<span class="time">
+					<?php echo anchor('/item/'. $v['iid'], '于1分钟前'); ?>
+					</span>
 				</div>
+				<?php if(!empty($v['cover'])){ ?>
+				<div class="cover">
+					<img src="<?php echo $v['cover']; ?>" alt="">
+				</div>
+				<?php } ?>
 				<div class="text">
-					算一个小调查，我经常会去问身边的人。<br><br>
-
-					电影或者电视剧里设定的答案，似乎都很美好，一个明知道不会有结果的人，下定了决心，要等到最后，10年，20年，甚至是更多年，很多人抹着眼泪说，这才是真爱，但我却觉得，毛骨悚然。<br><br>
-
-					而我的版本可能是这样。<br><br>
-
-					就像是与朋友约定好了，在老地方相见，你提前到了，就先站在那里等，时间一分一秒的过去，你每一刻都在期待，那个朋友能出现在你的视线里，冲你挥挥手，或仓促的跑过来，说抱歉来晚了，而你说，没事我也刚到。<br>
+					<?php echo $v['text']; ?>
 				</div>
 				<div class="act">
 					<a href="" class="fr">赞（1）</a>
-					<a href="" class="fr mr15">聊天</a>
+					<?php echo anchor('/letter/'.$v['uid'], '聊天' , array('class'=>'fr mr15')); ?>
 				</div>
 			</div>
 		</div>
+	<?php 
+			}
+		} 
+	?>
 
 		<div class="item">
 			<a class="avatar" href=""><img src="img/avatar1.jpg" alt=""></a>

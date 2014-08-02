@@ -1,5 +1,8 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+// 网站状态
+$config['site_open'] = true;
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -360,3 +363,21 @@ $config['proxy_ips'] = '';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
+
+
+/*
+| -------------------------------------------------------------------
+|  Native Auto-load
+| -------------------------------------------------------------------
+| 
+| Nothing to do with config/autoload.php, this allows PHP autoload to work
+| for base controllers and some third-party libraries.
+|
+*/
+function __autoload($class)
+{
+	 if(strpos($class, 'CI_') !== 0)
+	 {
+	  	@include_once( APPPATH . 'core/'. $class . EXT );
+	 }
+}

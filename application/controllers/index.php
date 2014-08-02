@@ -1,5 +1,5 @@
 <?php 
-	class Index extends CI_Controller{
+	class Index extends Public_Controller{
 
 		public function __construct(){
 			parent::__construct();
@@ -9,15 +9,15 @@
 		public function index(){
 
 			// 模板变量
-			$data = array(
+			$this->data['page'] = array(
 				'title' => '首页',
-				'current_user'  => $this->auth->get_current_user(),
-				'item'  => $this->items->get_items(),
-				'topic' => $this->topics->get_recent_topic(),
+				'name' => 'index',
 			);
+			$this->data['item'] = $this->items->get_items();
+			$this->data['topic'] = $this->topics->get_recent_topic();
 
 			// 输出模板
-			$this->load->view('pages/index', $data);
+			$this->load->view('pages/index', $this->data);
 		}
 	}
 ?>

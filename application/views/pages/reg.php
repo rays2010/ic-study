@@ -4,7 +4,7 @@
 	echo '<div id="start">';
 	echo '<h2>日子过的就像那些不眠的晚上</h2>';
 
-	if($page == 'index'){
+	if($page['name'] == 'index'){
 		// 注册表单
 		echo form_open('reg/add', array('class'=>'login clearfix'));
 		echo '<div class="fr">已有帐号？<a href="/login">点击登录</a></div>';
@@ -14,12 +14,12 @@
 		echo form_password(array('name'=>'pw', 'placeholder'=> '密码'));
 		echo form_submit(array('value'=>'注册', 'class'=>'confirm'));
 		echo form_close();
-	} else if($page == 'finish') {
+	} else if($page['name'] == 'finish') {
 		echo '<div class="login clearfix">';
 		echo '<h3>注册完成</h3>';
 		echo anchor('/', '返回首页');
 		echo '</div>';
-	} else if ($page == 'error'){
+	} else if ($page['name'] == 'error'){
 		echo '<div class="login clearfix">';
 		echo '<h3>注册失败</p>';
 		echo '<p>失败原因：'.$error['msg'].'</p>';

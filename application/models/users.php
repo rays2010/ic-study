@@ -11,6 +11,7 @@
 			return $query->row_array();
 		}
 
+		// 
 		public function get_nickname($id){
 			$query = $this->db->select('nickname')->get_where('users', array('uid' => $id));
 			$result = $query->row();
@@ -83,7 +84,7 @@
 						'mail' => $mail,
 						'password' => do_hash($pw, 'md5'),
 						'nickname' => $nickname,
-						'avatar' => '-',
+						'avatar' => 'upload/avatar/default.jpg',
 						'group' => 'user',
 						'register_time' => date('y-m-d H:i:s',time()),
 						'last_login_time' => date('y-m-d H:i:s',time())
@@ -107,8 +108,11 @@
 		}
 
 		// 更新用户资料
-		public function update_user(){
-
+		public function update_user($uid, $arr){
+			$this->db->where('uid', $uid);
+			$result = $this->db->update('users', $arr);
+			$user = $this->db->get_where('users', array('uid' => $uid))->row_array();
+			$this->auth->login($user);
 		}
 	}
 

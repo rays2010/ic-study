@@ -6,10 +6,10 @@
 		}
 
 		public function get_items(){
-			$this->db->select('*');
+			$this->db->select('uid, iid, text, avatar, nickname, cover');
 			$this->db->from('items');
 			$this->db->order_by('created', 'desc');
-
+			$this->db->join('users', 'users.uid = items.author_id');
 			$query = $this->db->get();
 			return $query->result_array();
 		}
@@ -25,7 +25,7 @@
 			return $query->result();
 		}
 
-		public function add_item($text){
+		public function add_item($text, $cover = ''){
 			$user = $this->auth->get_current_user();
 			$data = array(
 				'title' => $text,
@@ -35,6 +35,7 @@
 				'text' => $text,
 				'author_id' => $user['uid'],
 				'type' => 'post',
+				'cover' => $cover,
 				'status' => 'publish',
 				'comment_count' => 0
 			);

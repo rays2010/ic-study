@@ -34,7 +34,7 @@
  * @return	string
  */
 if (!function_exists('image')) {
-    function image($image_path, $preset) {
+    function image($image_path, $preset, $absolute_path = true) {
         $ci = &get_instance();
         
         // load the allowed image presets
@@ -48,7 +48,12 @@ if (!function_exists('image')) {
         if (isset($sizes[$preset])) {
             $new_path = $pathinfo["dirname"] . "/" . $pathinfo["filename"] . "-" . implode("x", $sizes[$preset]) . "." . $pathinfo["extension"];
         }
-        
-        return $new_path;
+
+        if($absolute_path){
+            $base_url = $ci->config->base_url();
+            return $base_url.$new_path;
+        } else {
+            return $new_path;
+        }
     }
 }

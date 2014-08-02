@@ -101,8 +101,8 @@
 
 <div id="side">
 	<div class="cell card clearfix">
-		<img src="../img/avatar2.jpg" alt="">
-		<h2>奇犽·揍敌客</h2>
+		<?php echo img(image($current_user['avatar'], 'square')); ?>
+		<h2><?php echo $current_user['nickname']; ?></h2>
 		<span>现居：北京</span>
 		<a href="" class="mail">私信</a>
 	</div>

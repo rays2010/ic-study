@@ -1,6 +1,6 @@
 <?php 
 
-	class Reg extends CI_Controller{
+	class Reg extends Public_Controller{
 
 		public function __construct(){
 			parent::__construct();
@@ -10,14 +10,13 @@
 		public function index(){
 
 			// 模板变量
-			$data = array(
+			$this->data['page'] = array(
 				'title' => '注册',
-				'page' => 'index',
-				'current_user'  => $this->auth->get_current_user(),
+				'name' => 'index',
 			);
 
 			// 模板渲染
-			$this->load->view('pages/reg', $data);
+			$this->load->view('pages/reg', $this->data);
 		}
 
 		public function add(){
@@ -37,15 +36,15 @@
 			}
 
 			// 模板变量
-			$data = array(
+			$this->data['page'] = array(
 				'title' => '注册',
-				'page' => $page,
-				'error' => $result,
-				'current_user'  => $this->auth->get_current_user(),
+				'name' => $page,
 			);
+			$this->data['error'] = $result;
+
 
 			// 模板输出
-			$this->load->view('pages/reg', $data);
+			$this->load->view('pages/reg', $this->data);
 			
 		}
 	}
