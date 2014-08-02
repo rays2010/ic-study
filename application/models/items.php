@@ -6,10 +6,12 @@
 		}
 
 		public function get_items(){
-			$this->db->select('uid, iid, text, avatar, nickname, cover');
+			$this->db->select('uid, iid, text, type, avatar, nickname, items.cover, items.created, t_title');
 			$this->db->from('items');
 			$this->db->order_by('created', 'desc');
-			$this->db->join('users', 'users.uid = items.author_id');
+			$this->db->join('users', 'users.uid = items.author_id', 'inner');
+			$this->db->join('topics', 'topics.tid = items.parent_id', 'left outer');
+			// $this->db->join('topics', 'topics.tid = items.parent_id');
 			$query = $this->db->get();
 			return $query->result_array();
 		}

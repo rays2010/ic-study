@@ -48,12 +48,12 @@ CREATE TABLE `items` (
 DROP TABLE IF EXISTS `topics`;
 CREATE TABLE `topics` (
 	`tid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'topic表主键',
-	`title` varchar(200) NOT NULL COMMENT '话题名称',
-	`excerpt` varchar(200) NOT NULL COMMENT '话题摘要',
-	`cover` varchar(128) NOT NULL COMMENT '配图',
-	`author_id` int(10) unsigned NOT NULL COMMENT '用户id',
-	`created` datetime NOT NULL COMMENT '内容生成时的GMT unix时间戳',
-	`modified` datetime NOT NULL COMMENT '内容更改时的GMT unix时间戳',
+	`t_title` varchar(200) NOT NULL COMMENT '话题名称',
+	`t_excerpt` varchar(200) NOT NULL COMMENT '话题摘要',
+	`t_cover` varchar(128) NOT NULL COMMENT '配图',
+	`t_author_id` int(10) unsigned NOT NULL COMMENT '用户id',
+	`t_created` datetime NOT NULL COMMENT '内容生成时的GMT unix时间戳',
+	`t_modified` datetime NOT NULL COMMENT '内容更改时的GMT unix时间戳',
 	PRIMARY KEY (`tid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 

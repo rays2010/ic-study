@@ -101,10 +101,12 @@
 
 <div id="side">
 	<div class="cell card clearfix">
-		<?php echo img(image($current_user['avatar'], 'square')); ?>
-		<h2><?php echo $current_user['nickname']; ?></h2>
-		<span>现居：北京</span>
+		<?php echo img(image($my['avatar'], 'square')); ?>
+		<h2><?php echo $my['nickname']; ?></h2>
+		<span>现居：<?php echo $my['location']; ?></span>
+		<?php if(!$page['is_master']){ ?>
 		<a href="" class="mail">私信</a>
+		<?php } ?>
 	</div>
 	<div class="cell">
 		发表文章（33）

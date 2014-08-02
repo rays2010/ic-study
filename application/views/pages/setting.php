@@ -20,7 +20,7 @@
 		echo form_input(array('name' => 'nickname', 'placeholder' => '昵称', 'value' => $my['nickname']));
 		echo '</p> <p>';
 		echo form_label('居住地', 'location');
-		echo form_input(array('name' => 'location', 'placeholder' => '居住地', 'value' => '保密'));
+		echo form_input(array('name' => 'location', 'placeholder' => '居住地', 'value' => $my['location']));
 		echo '</p> <p>';
 		echo form_label('', '');
 		echo form_submit(array('value' => '保存修改', 'class'=>'confirm')); 

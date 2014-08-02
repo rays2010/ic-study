@@ -14,6 +14,7 @@
 				'nickname' => $user['nickname'],
 				'uid' => $user['uid'],
 				'avatar' => $user['avatar'],
+				'location' => $user['location'],
 			);
 			$this->_CI->session->set_userdata(array('user'=> serialize($user)));
 		}

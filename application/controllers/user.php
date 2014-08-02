@@ -1,6 +1,6 @@
 <?php 
 
-	class User extends CI_Controller{
+	class User extends Public_Controller{
 
 		public function __construct(){
 			parent::__construct();
@@ -14,25 +14,22 @@
 				redirect('/');
 			}
 
-			$user = $this->auth->get_current_user();
-
-			if($id == $user['uid']){
-				$is_owner = TRUE;
+			if($id == $this->data['my']['uid']){
+				$is_master = TRUE;
 			} else {
-				$is_owner = FALSE;
+				$is_master = FALSE;
 			}
 
 			// 模板变量
-			$data = array(
+			$this->data['page'] = array(
 				'title' => '个人主页',
-				'current_user'  => $this->auth->get_current_user(),
-				'user' => $this->users->get_user($id),
-				'item' => $this->items->get_item_by_user($id),
-				'is_owner' => $is_owner,
+				'is_master' => $is_master,
 			);
+			$this->data['user'] = $this->users->get_user($id);
+			$this->data['item'] = $this->items->get_item_by_user($id);
 
 			// 模板输出
-			$this->load->view('pages/user', $data);
+			$this->load->view('pages/user', $this->data);
 		}
 	}
 

@@ -1,7 +1,7 @@
 <?php 
 	$this->load->view('templates/header');
 
-	if($page == 'index'){
+	if($page['name'] == 'index'){
 		// echo anchor('/','首页');
 		// echo '<br>';
 		// echo anchor('topic/add', '添加话题');
@@ -72,14 +72,14 @@
 	</div>
 </div>
 		
-<?php } else if($page == 'single'){
+<?php } else if($page['name'] == 'single'){
 		echo anchor('/topic','全部话题');
 		echo '<br>';
 		echo $topic['title'];
 		echo '<br>';
 		echo $topic['cover'];
 
-	} else if($page == 'add'){
+	} else if($page['name'] == 'add'){
 
 		echo '<div id="content">';
 		echo '<div id="add_post">';

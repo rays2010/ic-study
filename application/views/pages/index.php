@@ -2,39 +2,28 @@
 
 	$this->load->view('templates/header');
 
-	if(!empty($topic)){
-		echo '<br><br>';
-		echo '本周话题：';
-		echo '<br><br>';
-		echo anchor('/topic/'. $topic['tid'], $topic['title']);
-	}
-
-	// if(!empty($item)){
+	// if(!empty($topic)){
 	// 	echo '<br><br>';
-	// 	echo '最新文章：';
+	// 	echo '本周话题：';
 	// 	echo '<br><br>';
-	// 	foreach ($item as $k => $v) {
-	// 		echo anchor('/item/'. $v['iid'], $v['text']);
-	// 		echo 'by:'.anchor('/user/'.$v['author_id'] , $this->users->get_nickname($v['author_id']));
-	// 		echo '<br>';
-	// 		echo '<br>';
-	// 	}
+	// 	echo anchor('/topic/'. $topic['tid'], $topic['title']);
 	// }
-
 ?>
 	<div id="content">
 
 	<?php 
 		if(!empty($item)){ 
 		foreach ($item as $k => $v) {
-	?>
+
+		if($v['type'] == 'noname'){ ?>
+
 		<div class="item">
-			<a class="avatar" href=""><?php echo img(image($v['avatar'], 'square')); ?></a>
+			<?php echo anchor('#', img('upload/avatar/default.jpg', 'square'), array('class'=>'avatar')); ?>
 			<div class="panel">
 				<div class="meta">
-					<?php echo anchor('/user/'.$v['uid'] , $v['nickname'], array('class'=>'nickname')); ?>
+					<span>匿名信#123</span>
 					<span class="time">
-					<?php echo anchor('/item/'. $v['iid'], '于1分钟前'); ?>
+					<?php echo anchor('/item/'. $v['iid'], $v['created']); ?>
 					</span>
 				</div>
 				<?php if(!empty($v['cover'])){ ?>
@@ -43,55 +32,7 @@
 				</div>
 				<?php } ?>
 				<div class="text">
-					<?php echo $v['text']; ?>
-				</div>
-				<div class="act">
-					<a href="" class="fr">赞（1）</a>
-					<?php echo anchor('/letter/'.$v['uid'], '聊天' , array('class'=>'fr mr15')); ?>
-				</div>
-			</div>
-		</div>
-	<?php 
-			}
-		} 
-	?>
-
-		<div class="item">
-			<a class="avatar" href=""><img src="img/avatar1.jpg" alt=""></a>
-			<div class="panel">
-				<div class="meta">
-					<a class="nickname" href="#">睡不着先生一号</a>
-					<span class="time">于1分钟前</span>
-				</div>
-				<div class="cover">
-					<img src="img/pic1.jpg" alt="">
-				</div>
-				<div class="text">
-					还有没睡觉的同学嘛
-				</div>
-				<div class="act">
-					<span>来自话题：</span><a href="">这么晚了你怎么还不睡觉</a>
-					<a href="" class="fr">赞（1）</a>
-					<a href="" class="fr mr15">聊天</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="item">
-			<a class="avatar" href=""><img src="img/noname.jpg" alt=""></a>
-			<div class="panel">
-				<div class="meta">
-					<a class="nickname" href="#">匿名信#11223</a>
-					<span class="time">于1分钟前</span>
-				</div>
-				<div class="cover">
-					
-				</div>
-				<div class="music">
-					<embed src="http://www.xiami.com/widget/0_1769477290/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed>
-				</div>
-				<div class="text">
-					睡不着，重复循环一首歌
+					<?php echo nl2br($v['text']); ?>
 				</div>
 				<div class="act">
 					<span>来自：</span><a href="">匿名箱</a>
@@ -100,28 +41,40 @@
 			</div>
 		</div>
 
+
+	<?php	} else if ($v['type'] == 'post'){
+	?>
 		<div class="item">
-			<a class="avatar" href=""><img src="img/avatar1.jpg" alt=""></a>
+			<?php echo anchor('/user/'.$v['uid'], img(image($v['avatar'], 'square')), array('class'=>'avatar')); ?>
 			<div class="panel">
 				<div class="meta">
-					<a class="nickname" href="#">睡不着先生一号</a>
-					<span class="time">于1分钟前</span>
+					<?php echo anchor('/user/'.$v['uid'], $v['nickname'], array('class'=>'nickname mr5')); ?>
+					<span class="time">
+					<?php echo anchor('/item/'. $v['iid'], $v['created']); ?>
+					</span>
 				</div>
+				<?php if(!empty($v['cover'])){ ?>
 				<div class="cover">
-					
+					<img src="<?php echo $v['cover']; ?>" alt="">
 				</div>
-				<div class="music">
-					<embed src="http://www.xiami.com/widget/0_1769477290/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed>
-				</div>
+				<?php } ?>
 				<div class="text">
-					睡不着，重复循环一首歌
+					<?php echo nl2br($v['text']); ?>
 				</div>
 				<div class="act">
+					<?php if(!empty($v['t_title'])){ ?>
+					<span>来自话题：</span><a href=""><?php echo $v['t_title']; ?></a>
+					<?php } ?>
 					<a href="" class="fr">赞（1）</a>
-					<a href="" class="fr mr15">聊天</a>
+					<?php echo anchor('/letter/'.$v['uid'], '聊天' , array('class'=>'fr mr15')); ?>
 				</div>
 			</div>
 		</div>
+	<?php 
+				}
+			}
+		} 
+	?>
 
 	</div>
 

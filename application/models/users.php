@@ -86,6 +86,7 @@
 						'nickname' => $nickname,
 						'avatar' => 'upload/avatar/default.jpg',
 						'group' => 'user',
+						'location' => '保密',
 						'register_time' => date('y-m-d H:i:s',time()),
 						'last_login_time' => date('y-m-d H:i:s',time())
 					);
