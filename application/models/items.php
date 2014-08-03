@@ -7,6 +7,9 @@
 
 		public function get_items(){
 			$user = $this->auth->get_current_user();
+
+			if(empty($user)) return;
+
 			$sql = 
 			"SELECT
 					uid, iid, text, type, avatar, nickname, praise_count, items.cover, items.created, t_title,

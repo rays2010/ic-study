@@ -1,16 +1,15 @@
 <?php 
 
-	class Noname extends CI_Controller{
+	class Noname extends Public_Controller{
 		public function index($id = 0){
 
-			$data = array(
+			$this->data['page'] = array(
 				'title' => '匿名箱',
-				'page' => 'index',
-				'current_user'  => $this->auth->get_current_user(),
+				'name' => 'index',
 			);
 
 			// 模板输出
-			$this->load->view('pages/noname', $data);
+			$this->load->view('pages/noname', $this->data);
 		}
 	}
 

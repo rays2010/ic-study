@@ -9,7 +9,7 @@ CREATE TABLE `users` (
   `mail` varchar(255) NOT NULL COMMENT '邮箱地址',
   `password` varchar(255) NOT NULL COMMENT '密码（md5加密）',
   `nickname` varchar(255) NOT NULL COMMENT '昵称',
-  `location` varchar(255) COMMENT '居住地',
+  `location` varchar(255) DEFAULT '保密' COMMENT '居住地',
   `avatar`   varchar(128) NOT NULL COMMENT '头像',
   `group`	varchar(16) NOT NULL COMMENT '所属组',
   `register_time` datetime NOT NULL COMMENT '注册时间',
@@ -18,7 +18,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `name` (`nickname`,`mail`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
-INSERT INTO `users` VALUES(1, 'bzyzwang@163.com', 'b713fa25054286805a947a2586381e2c', '极地', 'xxx', 'admin', '2014-07-01 00:00:00', '2014-07-01 00:00:00');
+INSERT INTO `users` VALUES(1, 'bzyzwang@163.com', 'b713fa25054286805a947a2586381e2c', '极地', '保密', 'upload/avatar/default.jpg', 'admin', '2014-07-01 00:00:00', '2014-07-01 00:00:00');
 
 -- ----------------------------
 -- 文章表
