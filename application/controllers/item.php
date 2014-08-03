@@ -57,7 +57,7 @@
 
 			$config['upload_path'] = './'.$path;
 	        $config['allowed_types'] = 'gif|jpg|png';
-	        $config['max_size'] = '100';
+	        $config['max_size'] = '500';
 	        $config['max_width']  = '1024';
 	        $config['max_height']  = '768';
 	        $config['encrypt_name'] = true;
@@ -79,7 +79,7 @@
 				'name' => 'add',
 			);
 			$this->data['img_url'] = $img_url;
-			$this->data['error'] = $error;
+			$this->data['error'] = $error['error'];
 
 	        $this->load->view('pages/item', $this->data);
 		}

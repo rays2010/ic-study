@@ -9,7 +9,7 @@
 			$user = $this->auth->get_current_user();
 			$sql = 
 			"SELECT
-					uid, iid, text, type, avatar, nickname, items.cover, items.created, t_title,
+					uid, iid, text, type, avatar, nickname, praise_count, items.cover, items.created, t_title,
 					IF(praises.p_item, '1', '0') AS isUp
 				FROM
 					items
@@ -107,6 +107,11 @@
 				$this->db->set($values); 
 				$this->db->insert('praises'); 
 			}
+
+			// 更新点赞数
+			$query = $this->db->get_where('praises', array('p_item' => $id));
+			$num = $query->num_rows();
+			$this->db->update('items', array('praise_count' => $num), array('iid'=>$id));
 		}
 
 		// 取消点赞
@@ -114,6 +119,11 @@
 			$user = $this->auth->get_current_user();
 			$values = array('p_item'=> $id, 'p_author'=> $user['uid']);
 			$this->db->delete('praises', $values);
+
+			// 更新点赞数
+			$query = $this->db->get_where('praises', array('p_item' => $id));
+			$num = $query->num_rows();
+			$this->db->update('items', array('praise_count' => $num), array('iid'=>$id));
 		}
 	}
 

@@ -70,6 +70,9 @@
 						} else {
 							echo anchor('/item/up/'. $v['iid'], '赞', array('class'=>'fr')); 
 						}
+						if($v['praise_count']>0){
+							echo '<span class="fr">（'.$v['praise_count'].'人赞过）</span>';
+						}
 					?>
 					<?php echo anchor('/letter/'.$v['uid'], '聊天' , array('class'=>'fr mr15')); ?>
 				</div>

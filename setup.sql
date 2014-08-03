@@ -37,7 +37,7 @@ CREATE TABLE `items` (
   `type` varchar(16) DEFAULT 'post' NOT NULL COMMENT '内容类别',
   `status` varchar(16) DEFAULT 'publish' NOT NULL COMMENT '内容状态',
   `comment_count` int(10) unsigned DEFAULT '0' COMMENT '评论数',
-  `praises` int(10) unsigned DEFAULT '0' COMMENT '点赞',
+  `praise_count` int(10) unsigned DEFAULT '0' COMMENT '点赞数',
   PRIMARY KEY (`iid`),
   KEY `created` (`created`),
   KEY `author_id` (`author_id`)

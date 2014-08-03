@@ -67,6 +67,7 @@
 		echo form_open_multipart('item/add_cover');
 		echo '<input type="file" name="userfile" size="20" />';
 		echo form_submit(array('value'=>'上传', 'class'=>''));
+		echo $error;
 		echo form_close();
 		/*end*/
 
