@@ -21,7 +21,7 @@
 			<?php echo anchor('#', img('upload/avatar/default.jpg', 'square'), array('class'=>'avatar')); ?>
 			<div class="panel">
 				<div class="meta">
-					<span>匿名信#123</span>
+					<span>匿名信</span>
 					<span class="time">
 					<?php echo anchor('/item/'. $v['iid'], $v['created']); ?>
 					</span>
@@ -36,7 +36,6 @@
 				</div>
 				<div class="act">
 					<span>来自：</span><a href="">匿名箱</a>
-					<a href="" class="fr">赞（1）</a>
 				</div>
 			</div>
 		</div>
@@ -65,7 +64,13 @@
 					<?php if(!empty($v['t_title'])){ ?>
 					<span>来自话题：</span><a href=""><?php echo $v['t_title']; ?></a>
 					<?php } ?>
-					<a href="" class="fr">赞（1）</a>
+					<?php 
+						if($v['isUp'] == 1){
+							echo anchor('/item/unup/'. $v['iid'], '已赞', array('class'=>'fr')); 
+						} else {
+							echo anchor('/item/up/'. $v['iid'], '赞', array('class'=>'fr')); 
+						}
+					?>
 					<?php echo anchor('/letter/'.$v['uid'], '聊天' , array('class'=>'fr mr15')); ?>
 				</div>
 			</div>

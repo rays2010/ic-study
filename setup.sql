@@ -37,6 +37,7 @@ CREATE TABLE `items` (
   `type` varchar(16) DEFAULT 'post' NOT NULL COMMENT '内容类别',
   `status` varchar(16) DEFAULT 'publish' NOT NULL COMMENT '内容状态',
   `comment_count` int(10) unsigned DEFAULT '0' COMMENT '评论数',
+  `praises` int(10) unsigned DEFAULT '0' COMMENT '点赞',
   PRIMARY KEY (`iid`),
   KEY `created` (`created`),
   KEY `author_id` (`author_id`)
@@ -71,6 +72,20 @@ CREATE TABLE `musics` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+
+-- ----------------------------
+-- 点赞表
+-- ----------------------------
+DROP TABLE IF EXISTS `praises`;
+CREATE TABLE `praises` (
+  `p_author` int(10) unsigned NOT NULL COMMENT '点赞者id',
+  `p_item` int(10) unsigned NOT NULL COMMENT '被点赞的文章id',
+  `created` datetime NOT NULL COMMENT '点赞时间',
+  PRIMARY KEY (`p_author`,`p_item`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+
 -- 关系表
 -- ----------------------------
 DROP TABLE IF EXISTS `relationships`;

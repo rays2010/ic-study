@@ -124,6 +124,18 @@
 			}
 		}
 
+		public function up($id){
+			$this->items->up($id);
+			$ref = $this->input->server('HTTP_REFERER', TRUE);
+			redirect($ref, 'location'); 
+		}
+
+		public function unup($id){
+			$this->items->unup($id);
+			$ref = $this->input->server('HTTP_REFERER', TRUE);
+			redirect($ref, 'location'); 
+		}
+
 	}
 
 ?>
