@@ -37,11 +37,11 @@
 		} else {
 			echo img(image($my['avatar'], 'square'));
 		}
-		echo $data['error'];
+		
 		echo '<input type="file" name="userfile" size="20" />';
 		echo '</p> <p>';
 		echo form_label('', '');
-		echo $page['error'];
+		echo $error;
 		echo '</p> <p>';
 		echo form_label('', '');
 		echo form_submit(array('value' => '上传', 'class'=>'confirm')); 

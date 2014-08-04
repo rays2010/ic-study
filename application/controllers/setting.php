@@ -63,9 +63,9 @@
 			$this->data['page'] = array(
 				'title' => '修改头像',
 				'name' => 'avatar',
-				'error' => $error['error'],
 				'img_url' =>  $avatar_url,
 			);
+			$this->data['error'] = $error['error'];
 
 			// 模板输出
 			$this->load->view('pages/setting', $this->data);

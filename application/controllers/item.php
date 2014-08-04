@@ -68,7 +68,7 @@
 	           $error = array('error' => $this->upload->display_errors('', ''));
 	           $img_url = '';
 	        } else {
-	           $error = 1;
+	           $error['error'] = '';
 	           $img = $this->upload->data();
 	           $img_url = $path.'/'.$img['raw_name'].$img['file_ext'];
 	        }

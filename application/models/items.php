@@ -29,7 +29,9 @@
 				ON
 					items.iid = praises.p_item AND praises.p_author = ".$user['uid']."
 				ORDER BY
-					items.created 
+					items.created
+				WHERE
+				items.type = 'noname'
 				DESC";
 			$query = $this->db->query($sql);
 			return $query->result_array();
