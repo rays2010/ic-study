@@ -6,9 +6,10 @@
 		}
 
 		public function get_topics(){
-			$this->db->select('*');
+			$this->db->select('tid, t_title, t_excerpt, t_created, t_cover, nickname');
 			$this->db->from('topics');
 			$this->db->order_by('t_created', 'desc');
+			$this->db->join('users', 'users.uid = t_author_id', 'inner');
 
 			$query = $this->db->get();
 			return $query->result_array();
@@ -28,17 +29,17 @@
 			return $query->row_array();
 		}
 
-		public function add_topic($text){
-			$user = unserialize($this->session->userdata('user'));
+		public function add_topic($title, $text, $id, $cover){
 			$data = array(
-				't_title' => $text,
+				't_title' => $title,
 				't_excerpt' => $text,
 				't_created' => date('y-m-d H:i:s',time()),
 				't_modified' => date('y-m-d H:i:s',time()),
-				't_cover' => 'cover.jpg',
-				't_author_id' => $user['uid']
+				't_cover' => $cover,
+				't_author_id' => $id,
 			);
 			$result = $this->db->insert('topics', $data);
+			return $result;
 		}
 
 		public function del_topic(){

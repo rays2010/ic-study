@@ -34,7 +34,7 @@
 	    			<ul class="drop">
 	    				<li><?php echo anchor('/user/'.$my['uid'], '个人主页'); ?></li>
 		            	<li><a href="/item/add">添加文章</a></li>
-		            	<li><a href="/topic/add">添加话题</a></li>
+		            	<li><a href="/topic/create">添加话题</a></li>
                         <li><a href="/setting">设置</a></li>
 		            	<li><a title="退出" href="/logout">退出</a></li>
 	    			</ul>

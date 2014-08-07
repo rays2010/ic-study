@@ -292,6 +292,18 @@ header{
     // 话题
 
     .topic{
+        background: #fff;
+        h2{
+            padding: 10px;
+            border-bottom: 1px solid #eaeaea;
+            font-size: 18px;
+        }
+        p{
+            padding: 10px;
+        }
+    }
+
+    .hot_topic{
         .text{
             line-height: 1.5em;
         }
@@ -369,7 +381,8 @@ header{
         }
     }
 
-    textarea{
+    textarea,
+    input.title{
         width: 648px;
         height: 300px;
         padding: 10px;
@@ -379,6 +392,12 @@ header{
         border: 1px solid #fff;
         margin: 0 0 20px;
         background: #fff;
+    }
+
+    input.title{
+        height: 30px;
+        margin: 10px 0 0;
+        border-bottom: 1px solid #eaeaea;
     }
 
     input.submit{

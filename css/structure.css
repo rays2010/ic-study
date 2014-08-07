@@ -178,14 +178,22 @@ header {
       color: #fff; }
   #side .countdown:hover {
     background: #333; }
-  #side .topic .text {
+  #side .topic {
+    background: #fff; }
+    #side .topic h2 {
+      padding: 10px;
+      border-bottom: 1px solid #eaeaea;
+      font-size: 18px; }
+    #side .topic p {
+      padding: 10px; }
+  #side .hot_topic .text {
     line-height: 1.5em; }
-  #side .topic .cover {
+  #side .hot_topic .cover {
     width: 100px;
     height: 100px;
     float: left;
     margin: 0 10px 0 0; }
-  #side .topic .content a {
+  #side .hot_topic .content a {
     color: #307c9e; }
   #side .noname .content a {
     color: #307c9e; }
@@ -223,7 +231,8 @@ header {
     margin: 0 10px 0 0px; }
     #add_post .attach li a {
       color: #37b1e8; }
-#add_post textarea {
+#add_post textarea,
+#add_post input.title {
   width: 648px;
   height: 300px;
   padding: 10px;
@@ -233,6 +242,10 @@ header {
   border: 1px solid #fff;
   margin: 0 0 20px;
   background: #fff; }
+#add_post input.title {
+  height: 30px;
+  margin: 10px 0 0;
+  border-bottom: 1px solid #eaeaea; }
 #add_post input.submit {
   float: left;
   display: block;

@@ -5,7 +5,7 @@
 		public function __construct(){
 			parent::__construct();
 			$this->load->model(array('items', 'users', 'comments'));
-			$this->is_login(); //设置需要登录的页面
+			$this->is_login(array('index')); //设置需要登录的页面
 			$this->check_param('id', array('item', 'edit', 'up', 'unup')); // 检查页面传值
 		}
 

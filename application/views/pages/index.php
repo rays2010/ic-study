@@ -96,7 +96,7 @@
 			距离天亮还有<span>6</span>个小时
 		</div>
 	
-		<div class="cell topic">
+		<div class="cell hot_topic">
 			<h3>最新话题：失恋</h3>
 			<div class="content">
 				<div class="clearfix text">

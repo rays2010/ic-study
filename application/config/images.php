@@ -24,3 +24,6 @@ $config["image_sizes"]["hero"]   = array(940, 320);
 $config["image_sizes"]["small"]  = array(280, 0);
 $config["image_sizes"]["medium"] = array(340, 0);
 $config["image_sizes"]["large"]  = array(800, 0);
+
+$config["image_sizes"]["100"] = array(100, 100);
+$config["image_sizes"]["300"] = array(300, 300);

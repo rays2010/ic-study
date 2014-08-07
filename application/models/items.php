@@ -43,6 +43,36 @@
 			// return $query->result_array();
 		}
 
+		public function get_item_by_parnet($id){
+			$user = $this->auth->get_current_user();
+
+			if(empty($user)) return;
+
+			$sql = 
+			"SELECT
+					uid, iid, text, type, avatar, nickname, praise_count, items.cover, items.created, t_title,
+					IF(praises.p_item, '1', '0') AS isUp
+				FROM
+					items
+				INNER JOIN
+					users
+				ON
+					items.author_id = users.uid AND items.parent_id = ".$id."
+				LEFT OUTER JOIN
+					topics
+				ON
+					topics.tid = items.parent_id
+				LEFT OUTER JOIN
+					praises
+				ON
+					items.iid = praises.p_item AND praises.p_author = ".$user['uid']."
+				ORDER BY
+					items.created
+				DESC";
+			$query = $this->db->query($sql);
+			return $query->result_array();
+		}
+
 		public function get_item_by_id($id){
 			$query = $this->db->get_where('items', array('iid' => $id));
 			return $query->row_array();
@@ -60,7 +90,7 @@
 			return $query->result_array();
 		}
 
-		public function add_item($text, $cover = ''){
+		public function add_item($text, $cover = '', $parent_id = 0){
 			$user = $this->auth->get_current_user();
 			$data = array(
 				'title' => $text,
@@ -72,7 +102,8 @@
 				'type' => 'post',
 				'cover' => $cover,
 				'status' => 'publish',
-				'comment_count' => 0
+				'comment_count' => 0,
+				'parent_id' => $parent_id
 			);
 			$result = $this->db->insert('items', $data);
 		}
