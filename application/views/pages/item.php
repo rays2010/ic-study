@@ -59,23 +59,26 @@
 		echo '<div id="add_post">';
 		echo '<h2>添加文章</h2>';
 
-		if(!empty($img_url)){
-			echo img(image($img_url, 'square'));
+		// 显示封面
+		if(isset($upload['url'])){
+			echo img(image($upload['url'], 'square'));
+		} else if(isset($upload['msg'])){
+			echo '<span style="color:#fff;">'.$upload['msg'].'</span>';
 		}
 
 		/*配图*/
-		echo form_open_multipart('item/add_cover');
+		echo form_open_multipart('item/add');
 		echo '<input type="file" name="userfile" size="20" />';
-		echo form_submit(array('value'=>'上传', 'class'=>''));
-		if(isset($error)) echo $error;
+		echo form_submit(array('value'=>'上传'));
+		echo form_hidden('folder', 'img');
 		echo form_close();
 		/*end*/
 
 		echo form_open('item/add');
 		echo '<ul class="attach"><li><a href="">添加图片</a></li><li><a href="">添加音乐</a></li></ul>';
 		echo form_textarea(array('name'=>'text', 'placeholder'=>'输入想说的话...'));
-		if(!empty($img_url)){
-			echo form_hidden('cover', $img_url);
+		if(isset($upload['url'])){
+			echo form_hidden('cover', $upload['url']);
 		}
 		echo '<div class="clearfix">';
 		echo form_submit(array('value'=>'发布', 'class'=>'submit'));

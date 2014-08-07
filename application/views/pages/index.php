@@ -28,7 +28,7 @@
 				</div>
 				<?php if(!empty($v['cover'])){ ?>
 				<div class="cover">
-					<img src="<?php echo $v['cover']; ?>" alt="">
+					<img src="<?php echo image($v['cover'], 'square'); ?>" alt="">
 				</div>
 				<?php } ?>
 				<div class="text">
@@ -54,7 +54,7 @@
 				</div>
 				<?php if(!empty($v['cover'])){ ?>
 				<div class="cover">
-					<img src="<?php echo $v['cover']; ?>" alt="">
+					<img src="<?php echo image($v['cover'], 'square'); ?>" alt="">
 				</div>
 				<?php } ?>
 				<div class="text">

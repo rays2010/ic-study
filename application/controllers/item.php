@@ -5,21 +5,27 @@
 		public function __construct(){
 			parent::__construct();
 			$this->load->model(array('items', 'users', 'comments'));
+			$this->is_login(); //设置需要登录的页面
+			$this->check_param('id', array('item', 'edit', 'up', 'unup')); // 检查页面传值
 		}
 
-		public function index($id){
+		public function index($id=0){
 
 			// 请求处理
-			if(empty($id)){
-				redirect('/');
+			if($id<=0){
+				show_404();
 			}
-
+			
 			// 模板变量
 			$this->data['page'] = array(
 				'title' => '文章',
 				'name' => 'index',
 			);
+
 			$this->data['item'] = $this->items->get_item_by_id($id);
+			if(!$this->data['item']){
+				show_404();
+			}
 			$this->data['comment'] = $this->comments->get_comments($id);
 
 			// 输出模板
@@ -28,13 +34,16 @@
 
 		public function add(){
 
-			// 是否登录
-			if(empty($this->data['my'])) redirect('/login');
+			// 上传图片
+	    	$folder = $this->input->post('folder');
+	    	if($folder){
+				$this->data['upload'] = $this->upload($folder);
+	    	}
 
 			// 请求处理
 			$text = $this->input->post('text');
 			$cover = $this->input->post('cover');
-			if(!empty($text)){
+			if($text){
 				$this->items->add_item($text, $cover);
 				redirect('/');
 			}
@@ -49,44 +58,7 @@
 			$this->load->view('pages/item', $this->data);
 		}
 
-		public function add_cover(){
-
-			$path = 'upload/img/'.date("Y/m/d");
-
-			createdir('./'.$path);
-
-			$config['upload_path'] = './'.$path;
-	        $config['allowed_types'] = 'gif|jpg|png';
-	        $config['max_size'] = '500';
-	        $config['max_width']  = '1024';
-	        $config['max_height']  = '768';
-	        $config['encrypt_name'] = true;
-	        
-	        $this->load->library('upload', $config);
-
-	        if ( ! $this->upload->do_upload()){
-	           $error = array('error' => $this->upload->display_errors('', ''));
-	           $img_url = '';
-	        } else {
-	           $error['error'] = '';
-	           $img = $this->upload->data();
-	           $img_url = $path.'/'.$img['raw_name'].$img['file_ext'];
-	        }
-
-	        // 模板变量
-			$this->data['page'] = array(
-				'title' => '添加文章',
-				'name' => 'add',
-			);
-			$this->data['img_url'] = $img_url;
-			$this->data['error'] = $error['error'];
-
-	        $this->load->view('pages/item', $this->data);
-		}
-
 		public function edit($id = 0){
-
-			// if(!$this->items->can_edit($id)) redirect('/');
 
 			// 请求处理
 			$title = $this->input->post('title');

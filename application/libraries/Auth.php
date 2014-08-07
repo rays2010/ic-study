@@ -25,7 +25,7 @@
 
 		public function get_current_user(){
 			$user = unserialize($this->_CI->session->userdata('user'));
-			if(empty($user)) return null;
+			if(empty($user)) return false;
 			return $user;
 		}
 
