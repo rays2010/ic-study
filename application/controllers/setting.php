@@ -35,37 +35,22 @@
 		// 修改头像
 		public function avatar(){
 
-			$path = 'upload/avatar/'.date("Y/m/d");
+			// 上传图片
+	    	$folder = $this->input->post('folder');
+	    	if($folder){
+				$this->data['upload'] = $this->upload($folder);
+	    	}
 
-			createdir('./'.$path);
-
-			$config['upload_path'] = './'.$path;
-	        $config['allowed_types'] = 'gif|jpg|png';
-	        $config['max_size'] = '100';
-	        $config['max_width']  = '1024';
-	        $config['max_height']  = '768';
-	        $config['encrypt_name'] = true;
-	        
-	        $this->load->library('upload', $config);
-
-	        if ( ! $this->upload->do_upload()){
-	           $error = array('error' => $this->upload->display_errors('', ''));
-	           $avatar_url = '';
-	        } else {
-	           $error = 1;
-	           $img = $this->upload->data();
-	           $avatar_url = $path.'/'.$img['raw_name'].$img['file_ext'];
-	           $base_url = $this->config->base_url();
-	           $this->users->update_user($this->data['my']['uid'], array('avatar'=> $avatar_url));
-	        }
+	    	// 设置头像
+	    	if(isset($this->data['upload']['url'])){
+	    		$this->users->update_user($this->data['my']['uid'], array('avatar'=> $this->data['upload']['url']));
+	    	}
 
 			// 模板变量
 			$this->data['page'] = array(
 				'title' => '修改头像',
 				'name' => 'avatar',
-				'img_url' =>  $avatar_url,
 			);
-			$this->data['error'] = $error['error'];
 
 			// 模板输出
 			$this->load->view('pages/setting', $this->data);

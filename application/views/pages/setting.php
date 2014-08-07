@@ -32,8 +32,8 @@
 		echo '<h3>修改头像</h3>';
 		echo '<p>';
 		echo form_label('当前头像', '');
-		if(!empty($page['img_url'])){
-			echo img(image($page['img_url'], 'square'));
+		if(isset($upload['url'])){
+			echo img(image($upload['url'], 'square'));
 		} else {
 			echo img(image($my['avatar'], 'square'));
 		}
@@ -41,8 +41,11 @@
 		echo '<input type="file" name="userfile" size="20" />';
 		echo '</p> <p>';
 		echo form_label('', '');
-		echo $error;
+		if(isset($upload['msg'])){
+			echo $upload['msg'];
+		}
 		echo '</p> <p>';
+		echo form_hidden('folder', 'avatar');
 		echo form_label('', '');
 		echo form_submit(array('value' => '上传', 'class'=>'confirm')); 
 		echo '</p>';

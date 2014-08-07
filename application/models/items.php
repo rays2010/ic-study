@@ -87,10 +87,13 @@
 		}
 
 		public function can_edit($id){
-			$user = $this->auth->get_current_user();
-			$this->db->select('author_id');
+			
+			// $this->db->select('author_id');
 			$query = $this->db->get_where('items', array('iid' => $id));
+			
 			$result = $query->row_array();
+
+			$user = $this->auth->get_current_user();
 			if($result['author_id'] == $user['uid']){
 				return true;
 			} else {

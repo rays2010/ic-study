@@ -39,14 +39,11 @@
 	    	$method = $this->router->fetch_method(); 
 	    	if($type == 'id'){
 	    		$id = $this->uri->segment(3);
-	    		if(!is_int($id) && in_array($method, $methods)){
-	    			show_404();
-	    		} else {
-	    			echo 'ok';
+	    		if(!is_numeric($id) && in_array($method, $methods)){
+	    			show_error('非法参数', 500, '错误');
 	    		}
 	    	}
 	    }
-
 
 	    // 通用上传方法
 	    protected function upload($folder){

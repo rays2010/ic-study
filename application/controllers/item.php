@@ -10,23 +10,19 @@
 		}
 
 		public function index($id=0){
-
-			// 请求处理
-			if($id<=0){
-				show_404();
-			}
 			
+			// 取内容
+			$this->data['item'] = $this->items->get_item_by_id($id);
+			if(!$this->data['item']){
+				show_error('没有内容', 500, '错误');
+			}
+			$this->data['comment'] = $this->comments->get_comments($id);
+
 			// 模板变量
 			$this->data['page'] = array(
 				'title' => '文章',
 				'name' => 'index',
 			);
-
-			$this->data['item'] = $this->items->get_item_by_id($id);
-			if(!$this->data['item']){
-				show_404();
-			}
-			$this->data['comment'] = $this->comments->get_comments($id);
 
 			// 输出模板
 			$this->load->view('pages/item', $this->data);
@@ -58,22 +54,27 @@
 			$this->load->view('pages/item', $this->data);
 		}
 
-		public function edit($id = 0){
+		public function edit($id=0){
+
+			show_error('你没有编辑权限', 500, '错误');
+
+			// 是否具有编辑权限
+			if(!$this->items->can_edit($id)) show_error('你没有编辑权限', 500, '错误');
 
 			// 请求处理
 			$title = $this->input->post('title');
-			$iid = $this->input->post('iid');
-			if(!empty($title) && !empty($iid)){
 
-				if(!$this->items->can_edit($iid)) redirect('/');
+			if($title){
 
-				$this->items->edit_item($iid, array(
+				$this->items->edit_item($id, array(
 					'title' => $title,
 					'text' => $title,
 				));
-				redirect('item/'.$iid);
+
+				redirect('item/'.$id);
 
 			} else {
+
 				// 模板变量
 				$this->data['page'] = array(
 					'title' => '修改文章',
@@ -87,13 +88,11 @@
 		}
 
 		public function del($id = 0){
-			if($id !== 0 && $this->items->can_edit($id)){
-				$this->items->del_item($id);
-				$user = $this->data['my'];
-				redirect('user/'.$user['uid']);
-			} else {
-				redirect('/');
-			}
+			// 是否具有编辑权限
+			if(!$this->items->can_edit($id)) show_error('你没有编辑权限', 500, '错误');
+
+			$this->items->del_item($id);
+			redirect('user/'.$this->data['my']['uid']);
 		}
 
 		public function up($id){

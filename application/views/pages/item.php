@@ -4,10 +4,14 @@
 	if($page['name'] == 'index'){
 		$nickname = $this->users->get_nickname($item['author_id']);
 		echo anchor('/', '首页');
+
 		echo '<br>';
 		echo anchor('/user/'.$item['author_id'], $nickname.'的个人主页');
 		echo '<br>';
 		echo $item['text'];
+		if($item['author_id'] == $my['uid']){
+			echo anchor('/item/edit/'.$item['iid'], '编辑');
+		}
 		echo '<br>';
 		echo '作者：'.$nickname;
 		echo '<br>';
@@ -91,9 +95,8 @@
 		
 	} else if($page['name'] == 'edit'){
 		echo anchor('/', '首页');
-		echo form_open('item/edit');
+		echo form_open('item/edit/'.$item['iid']);
 		echo form_textarea(array('name'=>'title', 'placeholder'=>'输入想说的话...', 'value'=> $item['title']));
-		echo form_hidden('iid', $item['iid']);
 		echo '<br>';
 		echo form_submit(array('value'=>'更新'));
 		echo form_close();
