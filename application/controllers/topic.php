@@ -23,7 +23,7 @@
 					'name' => 'single',
 				);
 				$this->data['topic'] = $this->topics->get_topic($id);
-				$this->data['items'] = $this->items->get_item_by_parnet($id);
+				$this->data['items'] = $this->items->get_items(array('parent_id'=>$id));
 			}
 
 			// 模板输出

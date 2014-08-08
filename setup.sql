@@ -26,7 +26,7 @@ INSERT INTO `users` VALUES(1, 'bzyzwang@163.com', 'b713fa25054286805a947a2586381
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE `items` (
   `iid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'post表主键',
-  `parent_id` int(10) unsigned COMMENT '父id',
+  `parent_id` int(10) unsigned DEFAULT '0' COMMENT '父id',
   `title` varchar(200) NOT NULL COMMENT '内容标题',
   `slug` varchar(200) DEFAULT NULL COMMENT '内容缩略名',
   `created` datetime NOT NULL COMMENT '内容生成时的GMT unix时间戳',

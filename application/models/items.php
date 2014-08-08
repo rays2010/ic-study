@@ -5,70 +5,58 @@
 			$this->load->database();
 		}
 
-		public function get_items(){
+		public function get_items($array = null){
+			//取得当前登录用户
 			$user = $this->auth->get_current_user();
-
 			if(empty($user)) return;
 
+			// 取特定用户的所有文章文章
+			if(isset($array['author_id'])){
+				$a = ' AND items.author_id='.$array['author_id'];
+			} else {
+				$a = '';
+			}
+
+			// 筛选
+			if(isset($array['type'])){
+				if($array['type'] == 'item'){
+					$c = ' AND items.parent_id =0';
+				} else if ($array['type'] == 'join') {
+					$c = ' AND items.parent_id !=0';
+				}
+			} else {
+				$c = '';
+			}
+
+			// 取特定话题下的文章
+			if(isset($array['parent_id'])){
+				$b = ' AND items.parent_id='.$array['parent_id'];
+			} else {
+				$b = '';
+			}
+
+			//查询语句
 			$sql = 
 			"SELECT
-					uid, iid, text, type, avatar, nickname, praise_count, items.cover, items.created, t_title,
-					IF(praises.p_item, '1', '0') AS isUp
-				FROM
-					items
-				INNER JOIN
-					users
-				ON
-					items.author_id = users.uid
-				LEFT OUTER JOIN
-					topics
-				ON
-					topics.tid = items.parent_id
-				LEFT OUTER JOIN
-					praises
-				ON
-					items.iid = praises.p_item AND praises.p_author = ".$user['uid']."
-				ORDER BY
-					items.created
-				DESC";
-			$query = $this->db->query($sql);
-			return $query->result_array();
-			// $this->db->select('uid, iid, text, type, avatar, nickname, items.cover, items.created, t_title, p_author AS isUp');
-			// $this->db->from('items');
-			// $this->db->order_by('created', 'desc');
-			// $this->db->join('users', 'users.uid = items.author_id', 'inner');
-			// $this->db->join('topics', 'topics.tid = items.parent_id', 'left outer');
-			// $this->db->join('praises', 'items.iid = praises.p_item AND praises.p_author = 1' , 'left outer');
-			// $query = $this->db->get();
-			// return $query->result_array();
-		}
-
-		public function get_item_by_parnet($id){
-			$user = $this->auth->get_current_user();
-
-			if(empty($user)) return;
-
-			$sql = 
-			"SELECT
-					uid, iid, text, type, avatar, nickname, praise_count, items.cover, items.created, t_title,
-					IF(praises.p_item, '1', '0') AS isUp
-				FROM
-					items
-				INNER JOIN
-					users
-				ON
-					items.author_id = users.uid AND items.parent_id = ".$id."
-				LEFT OUTER JOIN
-					topics
-				ON
-					topics.tid = items.parent_id
-				LEFT OUTER JOIN
-					praises
-				ON
-					items.iid = praises.p_item AND praises.p_author = ".$user['uid']."
-				ORDER BY
-					items.created
-				DESC";
+				uid, iid, text, type, avatar, nickname, praise_count, items.cover, items.created, t_title,
+				IF(praises.p_item, '1', '0') AS isUp
+			FROM
+				items
+			INNER JOIN
+				users
+			ON
+				items.author_id = users.uid ".$a.$b.$c."
+			LEFT OUTER JOIN
+				topics
+			ON
+				topics.tid = items.parent_id
+			LEFT OUTER JOIN
+				praises
+			ON
+				items.iid = praises.p_item AND praises.p_author = ".$user['uid']."
+			ORDER BY
+				items.created
+			DESC";
 			$query = $this->db->query($sql);
 			return $query->result_array();
 		}
@@ -76,18 +64,6 @@
 		public function get_item_by_id($id){
 			$query = $this->db->get_where('items', array('iid' => $id));
 			return $query->row_array();
-		}
-
-		public function get_item_by_user($id){
-			$this->db->select('uid, iid, text, type, avatar, nickname, items.cover, items.created, t_title');
-			$this->db->from('items');
-			$this->db->order_by('created', 'desc');
-			$this->db->join('users', 'users.uid = items.author_id', 'inner');
-			$this->db->join('topics', 'topics.tid = items.parent_id', 'left outer');
-			$this->db->where('users.uid', $id);
-			// $this->db->join('topics', 'topics.tid = items.parent_id');
-			$query = $this->db->get();
-			return $query->result_array();
 		}
 
 		public function add_item($text, $cover = '', $parent_id = 0){

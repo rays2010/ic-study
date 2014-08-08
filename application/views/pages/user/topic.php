@@ -3,9 +3,7 @@
 ?>
 
 <div id="content">
-<?php 
-	$this->load->view('templates/items');
-?>
+<?php print_r($topics); ?>
 </div>
 
 <?php

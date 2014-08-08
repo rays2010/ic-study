@@ -13,8 +13,7 @@
 				'title' => '首页',
 				'name' => 'index',
 			);
-			$this->data['item'] = $this->items->get_items();
-			$this->data['topic'] = $this->topics->get_recent_topic();
+			$this->data['items'] = $this->items->get_items();
 
 			// 输出模板
 			$this->load->view('pages/index', $this->data);

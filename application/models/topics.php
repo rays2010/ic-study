@@ -5,11 +5,19 @@
 			$this->load->database();
 		}
 
-		public function get_topics(){
+		public function get_topics($array = null){
+
+			// 取特定用户的创建的话题
+			if(isset($array['author_id'])){
+				$a = ' AND t_author_id='.$array['author_id'];
+			} else {
+				$a = '';
+			}
+
 			$this->db->select('tid, t_title, t_excerpt, t_created, t_cover, nickname');
 			$this->db->from('topics');
 			$this->db->order_by('t_created', 'desc');
-			$this->db->join('users', 'users.uid = t_author_id', 'inner');
+			$this->db->join('users', 'users.uid = t_author_id'.$a, 'inner');
 
 			$query = $this->db->get();
 			return $query->result_array();
